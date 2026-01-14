@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import UserRoutes from "./routes/user.routes";
 import EnrollRoutes from "./routes/enroll.routes";
 import QuizRoutes from "./routes/quiz.routes";
-import forumThreadsRoutes from "./routes/forumThreads.routes";
+import forumThreadsRoutes from "./routes/forum.routes";
 import CoursesRoutes from "./routes/courses.routes";
 
 dotenv.config();
