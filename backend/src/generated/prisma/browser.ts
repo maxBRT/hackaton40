@@ -22,3 +22,53 @@ export * from './enums';
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model LearningPath
+ * 
+ */
+export type LearningPath = Prisma.LearningPathModel
+/**
+ * Model Course
+ * 
+ */
+export type Course = Prisma.CourseModel
+/**
+ * Model Module
+ * 
+ */
+export type Module = Prisma.ModuleModel
+/**
+ * Model Lesson
+ * 
+ */
+export type Lesson = Prisma.LessonModel
+/**
+ * Model Quiz
+ * 
+ */
+export type Quiz = Prisma.QuizModel
+/**
+ * Model Question
+ * 
+ */
+export type Question = Prisma.QuestionModel
+/**
+ * Model CourseUser
+ * 
+ */
+export type CourseUser = Prisma.CourseUserModel
+/**
+ * Model LessonProgress
+ * 
+ */
+export type LessonProgress = Prisma.LessonProgressModel
+/**
+ * Model ForumThread
+ * 
+ */
+export type ForumThread = Prisma.ForumThreadModel
+/**
+ * Model ForumPost
+ * 
+ */
+export type ForumPost = Prisma.ForumPostModel

@@ -9,4 +9,14 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User'
+export type * from './models/LearningPath'
+export type * from './models/Course'
+export type * from './models/Module'
+export type * from './models/Lesson'
+export type * from './models/Quiz'
+export type * from './models/Question'
+export type * from './models/CourseUser'
+export type * from './models/LessonProgress'
+export type * from './models/ForumThread'
+export type * from './models/ForumPost'
 export type * from './commonInputTypes'

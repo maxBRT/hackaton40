@@ -1,13 +1,20 @@
 import express from 'express';
-import prisma from "./database/prisma";
+import {authMiddleware} from "./middleware/authMiddleware";
+import dotenv from "dotenv";
+import UserRoutes from "./routes/user.routes";
+
+dotenv.config();
+
 const app = express();
 
 app.use(express.json());
+app.use("/auth", UserRoutes);
 
-app.get('/', (req, res) => {
+
+app.get('/', authMiddleware, (req, res) => {
+    console.log(req.user);
     res.send('Hello World');
 })
-
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server is running on port 3000");
 });
