@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000/api
-@adminToken = PASTE_ADMIN_JWT_HERE
+@adminToken = 
 
 
 ### ===============================
@@ -53,3 +53,65 @@ Authorization: Bearer {{adminToken}}
   "isPublished": true,
   "learningPathId": "PASTE_LEARNING_PATH_ID_HERE"
 }
+
+
+
+@baseUrl = http://localhost:3000/api
+@json = application/json
+
+# Remplis ces IDs avec de vraies valeurs
+@courseId = COURSE_ID_ICI
+@moduleId = MODULE_ID_ICI
+@lessonId = LESSON_ID_ICI
+
+
+# ===============================
+# MODULES
+# ===============================
+
+### List modules
+GET {{baseUrl}}/modules
+Accept: {{json}}
+
+### Create module
+POST {{baseUrl}}/modules
+Content-Type: {{json}}
+
+{
+  "title": "Module Test",
+  "position": 1,
+  "courseId": "{{courseId}}"
+}
+
+### Get module by id
+GET {{baseUrl}}/modules/{{moduleId}}
+Accept: {{json}}
+
+
+# ===============================
+# LESSONS
+# ===============================
+
+### List lessons
+GET {{baseUrl}}/lessons
+Accept: {{json}}
+
+### List lessons by module
+GET {{baseUrl}}/lessons?moduleId={{moduleId}}
+Accept: {{json}}
+
+### Create lesson
+POST {{baseUrl}}/lessons
+Content-Type: {{json}}
+
+{
+  "title": "Lesson Test",
+  "content": "Contenu de la leçon",
+  "moduleId": "{{moduleId}}",
+  "position": 1,
+  "difficulty": "BEGINNER"
+}
+
+### Get lesson by id
+GET {{baseUrl}}/lessons/{{lessonId}}
+Accept: {{json}}
