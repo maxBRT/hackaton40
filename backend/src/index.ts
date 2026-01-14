@@ -2,6 +2,9 @@ import express from 'express';
 import {authMiddleware} from "./middleware/authMiddleware";
 import dotenv from "dotenv";
 import UserRoutes from "./routes/user.routes";
+import CoursesRoutes from "./routes/courses.routes";
+import ModulesRoutes from "./routes/modules.routes";
+import LessonsRoutes from "./routes/lessons.routes";
 import EnrollRoutes from "./routes/enroll.routes";
 import QuizRoutes from "./routes/quiz.routes";
 import forumThreadsRoutes from "./routes/forumThreads.routes";
@@ -11,8 +14,15 @@ dotenv.config();
 
 const app = express();
 
+// Auth
 app.use(express.json());
 app.use("/auth", UserRoutes);
+
+// API
+app.use("/api/courses", CoursesRoutes);
+app.use("/api/modules", ModulesRoutes);
+app.use("/api/lessons", LessonsRoutes);
+
 app.use("/enroll", EnrollRoutes);
 app.use("/quiz", QuizRoutes);
 app.use("/forum-treads", authMiddleware, forumThreadsRoutes);
