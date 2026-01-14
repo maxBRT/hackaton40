@@ -3,7 +3,7 @@ import prisma from "../database/prisma";
 
 export const getQuiz = async (req: Request, res: Response) => {
     try{
-        const lessonId = req.params.lessonId;
+        const lessonId = req.params.id;
         if (!lessonId || typeof lessonId !== 'string') {
             return res.status(400).json({success: false, message: "Valid Lesson ID is required"});
         }
@@ -38,7 +38,7 @@ export const createQuiz = async (req: Request, res: Response) => {
         if (user.role != "ADMIN"){
             return res.status(403).json({success: false, message: "Admin only"});   
         }
-        const lessonId = req.params.lessonId;
+        const lessonId = req.params.id;
         if (!lessonId || typeof lessonId !== 'string') {
             return res.status(400).json({success: false, message: "Valid Lesson ID is required"});
         }

@@ -10,7 +10,7 @@ export const enroll = async (req: Request, res: Response) => {
                 success: false,
                 message: "User not found"});
         }
-        const courseId = req.params.courseId;
+        const courseId = req.params.id;
         if (!courseId || typeof courseId !== 'string') {
             return res.status(400).json(
                 { success: false, message: "Valid Course ID is required" }
@@ -37,7 +37,7 @@ export const enroll = async (req: Request, res: Response) => {
 
 export const unenroll = async (req: Request, res: Response) => {
     try {
-        const courseId = req.params.courseId;
+        const courseId = req.params.id;
         if (!courseId || typeof courseId !== 'string') {
             return res.status(400).json({success: false, message: "Valid Course ID is required"});
         }
