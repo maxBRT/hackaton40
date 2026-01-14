@@ -2,6 +2,7 @@ import express from 'express';
 import {authMiddleware} from "./middleware/authMiddleware";
 import dotenv from "dotenv";
 import UserRoutes from "./routes/user.routes";
+import EnrollRoutes from "./routes/enroll.routes";
 
 dotenv.config();
 
@@ -9,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use("/auth", UserRoutes);
-
+app.use("/enroll", EnrollRoutes)
 
 app.get('/', authMiddleware, (req, res) => {
     console.log(req.user);

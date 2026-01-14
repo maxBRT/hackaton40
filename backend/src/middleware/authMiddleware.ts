@@ -1,5 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import * as jwt from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+import dotenv from "dotenv";
+
+dotenv.config()
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const bearer = req.headers.authorization;

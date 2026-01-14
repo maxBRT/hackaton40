@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67696e6f-905e-4fc5-b290-b1df62a1e55f" name="Changes" comment="Implemented user authentication system, including login, registration, JWT-based middleware, and user info endpoint.">
+    <list default="true" id="67696e6f-905e-4fc5-b290-b1df62a1e55f" name="Changes" comment="Added generated Prisma `Course` model to the project.">
+      <change afterPath="$PROJECT_DIR$/src/routes/enroll.routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/User.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/authMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware/authMiddleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/User.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/user.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/courses.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/courses.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/browser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/browser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/commonInputTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/commonInputTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/enums.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/enums.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/internal/class.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/internal/class.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/internal/prismaNamespace.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/internal/prismaNamespace.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/internal/prismaNamespaceBrowser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/internal/prismaNamespaceBrowser.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/models.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/prisma/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma/models/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/enroll.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/enroll.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware/authMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware/authMiddleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,32 +75,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;1-student-enrollment&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;25.2.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;25.0.8&quot;,
-    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;junie.application.models&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/max/dev/hackaton/backend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "#19 on 1-student-enrollment",
+    "javascript.nodejs.core.library.configured.version": "25.2.1",
+    "javascript.nodejs.core.library.typings.version": "25.0.8",
+    "javascript.preferred.runtime.type.id": "node",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "junie.application.models",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/home/max/dev/hackaton/backend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1770131056387" />
     <option name="spentUsd" value="0.05390275" />
@@ -142,7 +132,7 @@
       <workItem from="1768396011795" duration="4935000" />
       <workItem from="1768405066039" duration="6026000" />
       <workItem from="1768414216606" duration="1588000" />
-      <workItem from="1768419525880" duration="500000" />
+      <workItem from="1768419525880" duration="2606000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented user authentication system, including login, registration, JWT-based middleware, and user info endpoint.">
       <option name="closed" value="true" />
@@ -152,15 +142,28 @@
       <option name="project" value="LOCAL" />
       <updated>1768414883585</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added generated Prisma `Course` model to the project.">
+      <option name="closed" value="true" />
+      <created>1768420039976</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1768420039976</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented user authentication system, including login, registration, JWT-based middleware, and user info endpoint." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented user authentication system, including login, registration, JWT-based middleware, and user info endpoint." />
+    <MESSAGE value="Added Prisma-generated `Course` model to the project" />
+    <MESSAGE value="Added generated Prisma `Course` model to the project." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added generated Prisma `Course` model to the project." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
