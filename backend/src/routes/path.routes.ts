@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getPaths } from "../src/controllers/path.controller";
+import { getPaths } from "../controllers/path.controller";
 
 
 const router = Router();
