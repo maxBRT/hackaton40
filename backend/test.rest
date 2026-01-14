@@ -1,6 +1,4 @@
 @baseUrl = http://localhost:3000/api
-@adminToken = 
-@baseUrl = http://localhost:3000
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWtlanl1dTEwMDAwOGdzYjJrcmhhejNmIiwidXNlckVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTc2ODQzMTA4NSwiZXhwIjoxNzY4NDM0Njg1fQ.nEXHuySP-RRbbBz6g_Zd55uKHdh6SXIe8bfVlHeJAxQ
 @adminToken = PASTE_ADMIN_JWT_HERE
 
@@ -62,19 +60,9 @@ Authorization: Bearer {{adminToken}}
 }
 
 
-
-@baseUrl = http://localhost:3000/api
-@json = application/json
-
-# Remplis ces IDs avec de vraies valeurs
-@courseId = COURSE_ID_ICI
-@moduleId = MODULE_ID_ICI
-@lessonId = LESSON_ID_ICI
-
-
-# ===============================
-# MODULES
-# ===============================
+### ===============================
+### MODULES
+### ===============================
 
 ### List modules
 GET {{baseUrl}}/modules
