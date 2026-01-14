@@ -1,7 +1,7 @@
 @baseUrl = http://localhost:3000/api
 @adminToken = 
 @baseUrl = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWtlanl1dTEwMDAwOGdzYjJrcmhhejNmIiwidXNlckVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTc2ODQyNzMyMiwiZXhwIjoxNzY4NDMwOTIyfQ.TJQNLHq87mAD17BqMl2XhSCjW8cDZ9a-fan8ue6Jezk
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWtlanl1dTEwMDAwOGdzYjJrcmhhejNmIiwidXNlckVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTc2ODQzMTA4NSwiZXhwIjoxNzY4NDM0Njg1fQ.nEXHuySP-RRbbBz6g_Zd55uKHdh6SXIe8bfVlHeJAxQ
 @adminToken = PASTE_ADMIN_JWT_HERE
 
 ### ===============================
@@ -33,17 +33,19 @@ Authorization: Bearer {{token}}
 
 
 ### ===============================
+### LEARNING PATHS
+### ===============================
+
+### Get all learning paths
+GET {{baseUrl}}/paths
+
+
+### ===============================
 ### COURSES
 ### ===============================
 
 ### Get all courses
 GET {{baseUrl}}/courses
-
-### Get courses with filters
-GET {{baseUrl}}/courses?category=Programming&level=BEGINNER&published=true
-
-### Search courses
-GET {{baseUrl}}/courses?q=javascript
 
 ### Create a course (Admin)
 POST {{baseUrl}}/courses
@@ -52,7 +54,7 @@ Authorization: Bearer {{adminToken}}
 
 {
   "title": "Introduction à JavaScript",
-  "description": "Bases du langage JavaScript : variables, conditions et boucles.",
+  "description": "Bases du langage JavaScript",
   "category": "Programming",
   "level": "BEGINNER",
   "isPublished": true,
@@ -145,14 +147,14 @@ Authorization: Bearer {{token}}
 GET {{baseUrl}}/quiz/lessons/PASTE_LESSON_ID_HERE
 Authorization: Bearer {{token}}
 
-### Create a quiz (Admin)
+### Create a quiz
 POST {{baseUrl}}/quiz/lessons/PASTE_LESSON_ID_HERE
 Content-Type: application/json
-Authorization: Bearer {{adminToken}}
+Authorization: Bearer {{token}}
 
 {
   "title": "JS Basics Quiz",
-  "description": "Test your knowledge of JS basics",
+  "description": "Test your knowledge",
   "questions": [
     {
       "question": "What is 1 + 1?",
@@ -167,12 +169,12 @@ Authorization: Bearer {{adminToken}}
 ### FORUM THREADS
 ### ===============================
 
-### List all forum threads for a lesson (Note: actually lists all threads in controller)
-GET {{baseUrl}}/forum-treads/lessons/PASTE_LESSON_ID_HERE
+### List forum threads for a course
+GET {{baseUrl}}/forum-treads/courses/PASTE_COURSE_ID_HERE
 Authorization: Bearer {{token}}
 
 ### Create a forum thread
-POST {{baseUrl}}/forum-treads/lessons/PASTE_LESSON_ID_HERE
+POST {{baseUrl}}/forum-treads/courses/PASTE_COURSE_ID_HERE
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -192,10 +194,43 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "title": "Updated Question about JS",
-  "content": "I finally understand closures, but what about prototypes?"
+  "title": "Updated Question",
+  "content": "Updated content"
 }
 
 ### Delete a forum thread
 DELETE {{baseUrl}}/forum-treads/PASTE_THREAD_ID_HERE
+Authorization: Bearer {{token}}
+
+
+### ===============================
+### FORUM POSTS (Replies)
+### ===============================
+
+### List posts for a thread
+GET {{baseUrl}}/forum-treads/PASTE_THREAD_ID_HERE/posts
+Authorization: Bearer {{token}}
+
+### Create a post in a thread
+POST {{baseUrl}}/forum-treads/PASTE_THREAD_ID_HERE/posts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "My Reply",
+  "content": "Here is what I think..."
+}
+
+### Update a post
+PUT {{baseUrl}}/forum-treads/posts/PASTE_POST_ID_HERE
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Updated Reply",
+  "content": "Corrected my thoughts"
+}
+
+### Delete a post
+DELETE {{baseUrl}}/forum-treads/posts/PASTE_POST_ID_HERE
 Authorization: Bearer {{token}}
