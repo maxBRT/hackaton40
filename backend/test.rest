@@ -60,10 +60,9 @@ Authorization: Bearer {{adminToken}}
 }
 
 
-
-# ===============================
-# MODULES
-# ===============================
+### ===============================
+### MODULES
+### ===============================
 
 ### List modules
 GET {{baseUrl}}/modules
@@ -111,7 +110,6 @@ Content-Type: {{json}}
 ### Get lesson by id
 GET {{baseUrl}}/lessons/{{lessonId}}
 Accept: {{json}}
-
 ### ===============================
 ### ENROLLMENT
 ### ===============================
