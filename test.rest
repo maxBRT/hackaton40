@@ -1,0 +1,55 @@
+@baseUrl = http://localhost:3000/api
+@adminToken = PASTE_ADMIN_JWT_HERE
+
+
+### ===============================
+### GET /courses – all courses
+### ===============================
+GET {{baseUrl}}/courses
+
+
+### ===============================
+### GET /courses – filter by learning path
+### ===============================
+GET {{baseUrl}}/courses?pathId=PATH_ID
+
+
+### ===============================
+### GET /courses – filter by category
+### ===============================
+GET {{baseUrl}}/courses?category=Programming
+
+
+### ===============================
+### GET /courses – filter by level
+### ===============================
+GET {{baseUrl}}/courses?level=BEGINNER
+
+
+### ===============================
+### GET /courses – filter by published
+### ===============================
+GET {{baseUrl}}/courses?published=true
+
+
+### ===============================
+### GET /courses – search (title/description)
+### ===============================
+GET {{baseUrl}}/courses?q=javascript
+
+
+### ===============================
+### POST /courses – ADMIN only
+### ===============================
+POST {{baseUrl}}/courses
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "Introduction à JavaScript",
+  "description": "Bases du langage JavaScript : variables, conditions et boucles.",
+  "category": "Programming",
+  "level": "BEGINNER",
+  "isPublished": true,
+  "learningPathId": "PASTE_LEARNING_PATH_ID_HERE"
+}
