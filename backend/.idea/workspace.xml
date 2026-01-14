@@ -31,6 +31,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "maxBRT"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:maxBRT/hackaton40.git",
+    "accountId": "645dbee9-74aa-46b4-9b14-f97a77b229e5"
+  }
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -82,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1768396010777</updated>
       <workItem from="1768396011795" duration="4935000" />
-      <workItem from="1768405066039" duration="518000" />
+      <workItem from="1768405066039" duration="859000" />
     </task>
     <servers />
   </component>
