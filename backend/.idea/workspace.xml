@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67696e6f-905e-4fc5-b290-b1df62a1e55f" name="Changes" comment="" />
+    <list default="true" id="67696e6f-905e-4fc5-b290-b1df62a1e55f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +54,9 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="38FWt8vRueMQO43xdiYK5cdWSTD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -81,10 +87,10 @@
 }]]></component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1770131056387" />
-    <option name="spentUsd" value="0.0140245" />
+    <option name="spentUsd" value="0.02502025" />
   </component>
   <component name="RecapUselessUpdatesCounter">
-    <option name="suspendCountdown" value="8" />
+    <option name="suspendCountdown" value="7" />
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -101,7 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1768396010777</updated>
       <workItem from="1768396011795" duration="4935000" />
-      <workItem from="1768405066039" duration="3122000" />
+      <workItem from="1768405066039" duration="6026000" />
     </task>
     <servers />
   </component>

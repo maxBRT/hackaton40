@@ -12,19 +12,174 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
 // ========================================
 // MODÈLES
 // ========================================
 
 model User {
+  id             String   @id @default(cuid())
+  username       String
+  email          String   @unique
+  role           Role     @default(USER)
+  hashedPassword String
+  currentExp     Int      @default(0)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  courseUsers CourseUser[]
+
+  lessonProgresses LessonProgress[]
+
+  forumThreads ForumThread[]
+
+  forumPosts ForumPost[]
+}
+
+model LearningPath {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  author      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  courses Course[]
+
+  @@index([title])
+}
+
+model Course {
+  id          String     @id @default(cuid())
+  title       String
+  description String
+  category    String?
+  level       Difficulty @default(BEGINNER)
+  isPublished Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  learningPathId String
+  learningPath   LearningPath @relation(fields: [learningPathId], references: [id], onDelete: Cascade)
+  
+  modules Module[]
+  courseUsers CourseUser[]
+  forumThreads ForumThread[]
+}
+
+model Module {
+  id String @id @default(cuid())
+  title String
+  position Int
+  courseId String
+  course  Course @relation(fields: [courseId], references: [id])
+  lessons Lesson[]
+}
+
+model Lesson {
+  id         String      @id @default(cuid())
+  title      String
+  difficulty Difficulty  
+  content    String @db.Text
+  position   Int?
+
+  // Relations
+  moduleId   String 
+  module     Module   @relation(fields: [moduleId], references: [id])
+  quizzes    Quiz[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  lessonProgresses LessonProgress[]
+}
+
+
+model Quiz {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  status      Boolean    @default(false) 
+
+  lessonId    String 
+  lesson      Lesson     @relation(fields: [lessonId], references: [id])
+  questions   Question[]
+  
+  @@map("quizzes")
+}
+
+model Question {
+  id            Int      @id @default(autoincrement())
+  answers       String[] 
+  correctAnswer Int 
+  quizId        String 
+  quiz          Quiz     @relation(fields: [quizId], references: [id])
+}
+
+model CourseUser {
+  userId String
+  courseId String
+  completed Boolean
+  completedAt DateTime?
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+  
+  @@id([userId, courseId])
+}
+
+model LessonProgress {
+  userId      String 
+  lessonId    String 
+  isCompleted Boolean  @default(false) 
+  completedAt DateTime? 
+  xpEarned    Int      @default(0)     
+
+  user   User   @relation(fields: [userId], references: [id])
+  lesson Lesson @relation(fields: [lessonId], references: [id])
+
+  @@id([userId, lessonId])
+}
+
+model ForumThread {
   id        String   @id @default(cuid())
-  username      String
-  email     String   @unique
-  role Role @default(USER)
-  hashedPassword  String
-  currentExp Int @default(0) 
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  title     String
+  content   String
+
+  // relations
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  posts     ForumPost[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
+
+model ForumPost {
+  id        String   @id @default(cuid())
+  title     String?
+  content   String
+
+  // relations
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  threadId  String
+  thread    ForumThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
 }
 
 enum Role {
