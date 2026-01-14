@@ -2,17 +2,18 @@ import express from 'express';
 import {authMiddleware} from "./middleware/authMiddleware";
 import dotenv from "dotenv";
 import UserRoutes from "./routes/user.routes";
+import CoursesRoutes from "./routes/courses.routes";
 import ModulesRoutes from "./routes/modules.routes";
 import LessonsRoutes from "./routes/lessons.routes";
 import EnrollRoutes from "./routes/enroll.routes";
 import QuizRoutes from "./routes/quiz.routes";
 import forumThreadsRoutes from "./routes/forum.routes";
-import CoursesRoutes from "./routes/courses.routes";
 import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+
 app.use(express.json());
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -21,9 +22,6 @@ app.use(cors({
 }))
 // Auth
 app.use("/api/auth", UserRoutes);
-
-// Auth
-app.use("/auth", UserRoutes);
 
 // API
 app.use("/api/courses", CoursesRoutes);
@@ -34,9 +32,8 @@ app.use("/api/quiz", QuizRoutes);
 app.use("/api/forum-treads", authMiddleware, forumThreadsRoutes);
 app.use("/api/courses", CoursesRoutes);
 
-app.get('/api/', authMiddleware, (req, res) => {
-    console.log(req.user);
-    res.send('Hello World');
+app.get('/api/', (req, res) => {
+    res.json({ message: 'Hello World'});
 })
 
 app.listen(process.env.PORT || 3000, () => {
