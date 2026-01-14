@@ -1,46 +1,51 @@
 @baseUrl = http://localhost:3000/api
 @adminToken = 
+@baseUrl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWtlanl1dTEwMDAwOGdzYjJrcmhhejNmIiwidXNlckVtYWlsIjoidGVzdEBleGFtcGxlLmNvbSIsImlhdCI6MTc2ODQyNzMyMiwiZXhwIjoxNzY4NDMwOTIyfQ.TJQNLHq87mAD17BqMl2XhSCjW8cDZ9a-fan8ue6Jezk
+@adminToken = PASTE_ADMIN_JWT_HERE
+
+### ===============================
+### AUTH
+### ===============================
+
+### Register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Get Me
+GET {{baseUrl}}/auth/me
+Authorization: Bearer {{token}}
 
 
 ### ===============================
-### GET /courses – all courses
+### COURSES
 ### ===============================
+
+### Get all courses
 GET {{baseUrl}}/courses
 
+### Get courses with filters
+GET {{baseUrl}}/courses?category=Programming&level=BEGINNER&published=true
 
-### ===============================
-### GET /courses – filter by learning path
-### ===============================
-GET {{baseUrl}}/courses?pathId=PATH_ID
-
-
-### ===============================
-### GET /courses – filter by category
-### ===============================
-GET {{baseUrl}}/courses?category=Programming
-
-
-### ===============================
-### GET /courses – filter by level
-### ===============================
-GET {{baseUrl}}/courses?level=BEGINNER
-
-
-### ===============================
-### GET /courses – filter by published
-### ===============================
-GET {{baseUrl}}/courses?published=true
-
-
-### ===============================
-### GET /courses – search (title/description)
-### ===============================
+### Search courses
 GET {{baseUrl}}/courses?q=javascript
 
-
-### ===============================
-### POST /courses – ADMIN only
-### ===============================
+### Create a course (Admin)
 POST {{baseUrl}}/courses
 Content-Type: application/json
 Authorization: Bearer {{adminToken}}
@@ -115,3 +120,82 @@ Content-Type: {{json}}
 ### Get lesson by id
 GET {{baseUrl}}/lessons/{{lessonId}}
 Accept: {{json}}
+### ===============================
+### ENROLLMENT
+### ===============================
+
+### Get my enrollments
+GET {{baseUrl}}/enroll/me
+Authorization: Bearer {{token}}
+
+### Enroll in a course
+POST {{baseUrl}}/enroll/PASTE_COURSE_ID_HERE
+Authorization: Bearer {{token}}
+
+### Unenroll from a course
+POST {{baseUrl}}/enroll/unenroll/PASTE_COURSE_ID_HERE
+Authorization: Bearer {{token}}
+
+
+### ===============================
+### QUIZ
+### ===============================
+
+### Get quiz for a lesson
+GET {{baseUrl}}/quiz/lessons/PASTE_LESSON_ID_HERE
+Authorization: Bearer {{token}}
+
+### Create a quiz (Admin)
+POST {{baseUrl}}/quiz/lessons/PASTE_LESSON_ID_HERE
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "JS Basics Quiz",
+  "description": "Test your knowledge of JS basics",
+  "questions": [
+    {
+      "question": "What is 1 + 1?",
+      "answers": ["1", "2", "3"],
+      "correctAnswer": 1
+    }
+  ]
+}
+
+
+### ===============================
+### FORUM THREADS
+### ===============================
+
+### List all forum threads for a lesson (Note: actually lists all threads in controller)
+GET {{baseUrl}}/forum-treads/lessons/PASTE_LESSON_ID_HERE
+Authorization: Bearer {{token}}
+
+### Create a forum thread
+POST {{baseUrl}}/forum-treads/lessons/PASTE_LESSON_ID_HERE
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Question about JS",
+  "content": "I don't understand closures",
+  "courseId": "PASTE_COURSE_ID_HERE"
+}
+
+### Get a specific forum thread
+GET {{baseUrl}}/forum-treads/PASTE_THREAD_ID_HERE
+Authorization: Bearer {{token}}
+
+### Update a forum thread
+PUT {{baseUrl}}/forum-treads/PASTE_THREAD_ID_HERE
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Updated Question about JS",
+  "content": "I finally understand closures, but what about prototypes?"
+}
+
+### Delete a forum thread
+DELETE {{baseUrl}}/forum-treads/PASTE_THREAD_ID_HERE
+Authorization: Bearer {{token}}

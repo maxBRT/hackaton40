@@ -13,7 +13,7 @@ interface RegisterBody {
 export const register = async (req: Request<any, RegisterBody>, res: Response) => {
     try {
         const data: RegisterBody = req.body;
-        if (data.username || !data.email || !data.password) {
+        if (!data.username || !data.email || !data.password) {
             return res.status(400).json({message: "All fields are required"});
         }
 
