@@ -38,6 +38,7 @@ export type UserMinAggregateOutputType = {
   id: string | null
   username: string | null
   email: string | null
+  role: $Enums.Role | null
   hashedPassword: string | null
   currentExp: number | null
   createdAt: Date | null
@@ -48,6 +49,7 @@ export type UserMaxAggregateOutputType = {
   id: string | null
   username: string | null
   email: string | null
+  role: $Enums.Role | null
   hashedPassword: string | null
   currentExp: number | null
   createdAt: Date | null
@@ -58,6 +60,7 @@ export type UserCountAggregateOutputType = {
   id: number
   username: number
   email: number
+  role: number
   hashedPassword: number
   currentExp: number
   createdAt: number
@@ -78,6 +81,7 @@ export type UserMinAggregateInputType = {
   id?: true
   username?: true
   email?: true
+  role?: true
   hashedPassword?: true
   currentExp?: true
   createdAt?: true
@@ -88,6 +92,7 @@ export type UserMaxAggregateInputType = {
   id?: true
   username?: true
   email?: true
+  role?: true
   hashedPassword?: true
   currentExp?: true
   createdAt?: true
@@ -98,6 +103,7 @@ export type UserCountAggregateInputType = {
   id?: true
   username?: true
   email?: true
+  role?: true
   hashedPassword?: true
   currentExp?: true
   createdAt?: true
@@ -195,6 +201,7 @@ export type UserGroupByOutputType = {
   id: string
   username: string
   email: string
+  role: $Enums.Role
   hashedPassword: string
   currentExp: number
   createdAt: Date
@@ -228,20 +235,30 @@ export type UserWhereInput = {
   id?: Prisma.StringFilter<"User"> | string
   username?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
+  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   hashedPassword?: Prisma.StringFilter<"User"> | string
   currentExp?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  courseUsers?: Prisma.CourseUserListRelationFilter
+  lessonProgresses?: Prisma.LessonProgressListRelationFilter
+  forumThreads?: Prisma.ForumThreadListRelationFilter
+  forumPosts?: Prisma.ForumPostListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrder
   currentExp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  courseUsers?: Prisma.CourseUserOrderByRelationAggregateInput
+  lessonProgresses?: Prisma.LessonProgressOrderByRelationAggregateInput
+  forumThreads?: Prisma.ForumThreadOrderByRelationAggregateInput
+  forumPosts?: Prisma.ForumPostOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -251,16 +268,22 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   username?: Prisma.StringFilter<"User"> | string
+  role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   hashedPassword?: Prisma.StringFilter<"User"> | string
   currentExp?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  courseUsers?: Prisma.CourseUserListRelationFilter
+  lessonProgresses?: Prisma.LessonProgressListRelationFilter
+  forumThreads?: Prisma.ForumThreadListRelationFilter
+  forumPosts?: Prisma.ForumPostListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrder
   currentExp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -279,6 +302,7 @@ export type UserScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
   username?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
+  role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   hashedPassword?: Prisma.StringWithAggregatesFilter<"User"> | string
   currentExp?: Prisma.IntWithAggregatesFilter<"User"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -289,46 +313,67 @@ export type UserCreateInput = {
   id?: string
   username: string
   email: string
+  role?: $Enums.Role
   hashedPassword: string
   currentExp?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  courseUsers?: Prisma.CourseUserCreateNestedManyWithoutUserInput
+  lessonProgresses?: Prisma.LessonProgressCreateNestedManyWithoutUserInput
+  forumThreads?: Prisma.ForumThreadCreateNestedManyWithoutUserInput
+  forumPosts?: Prisma.ForumPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: string
   username: string
   email: string
+  role?: $Enums.Role
   hashedPassword: string
   currentExp?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  courseUsers?: Prisma.CourseUserUncheckedCreateNestedManyWithoutUserInput
+  lessonProgresses?: Prisma.LessonProgressUncheckedCreateNestedManyWithoutUserInput
+  forumThreads?: Prisma.ForumThreadUncheckedCreateNestedManyWithoutUserInput
+  forumPosts?: Prisma.ForumPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
   currentExp?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  courseUsers?: Prisma.CourseUserUpdateManyWithoutUserNestedInput
+  lessonProgresses?: Prisma.LessonProgressUpdateManyWithoutUserNestedInput
+  forumThreads?: Prisma.ForumThreadUpdateManyWithoutUserNestedInput
+  forumPosts?: Prisma.ForumPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
   currentExp?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  courseUsers?: Prisma.CourseUserUncheckedUpdateManyWithoutUserNestedInput
+  lessonProgresses?: Prisma.LessonProgressUncheckedUpdateManyWithoutUserNestedInput
+  forumThreads?: Prisma.ForumThreadUncheckedUpdateManyWithoutUserNestedInput
+  forumPosts?: Prisma.ForumPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: string
   username: string
   email: string
+  role?: $Enums.Role
   hashedPassword: string
   currentExp?: number
   createdAt?: Date | string
@@ -339,6 +384,7 @@ export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
   currentExp?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -349,6 +395,7 @@ export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
   currentExp?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -359,6 +406,7 @@ export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrder
   currentExp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -373,6 +421,7 @@ export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrder
   currentExp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -383,6 +432,7 @@ export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   hashedPassword?: Prisma.SortOrder
   currentExp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -393,8 +443,17 @@ export type UserSumOrderByAggregateInput = {
   currentExp?: Prisma.SortOrder
 }
 
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type EnumRoleFieldUpdateOperationsInput = {
+  set?: $Enums.Role
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -409,22 +468,429 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type UserCreateNestedOneWithoutCourseUsersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCourseUsersInput, Prisma.UserUncheckedCreateWithoutCourseUsersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCourseUsersInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCourseUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCourseUsersInput, Prisma.UserUncheckedCreateWithoutCourseUsersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCourseUsersInput
+  upsert?: Prisma.UserUpsertWithoutCourseUsersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCourseUsersInput, Prisma.UserUpdateWithoutCourseUsersInput>, Prisma.UserUncheckedUpdateWithoutCourseUsersInput>
+}
+
+export type UserCreateNestedOneWithoutLessonProgressesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLessonProgressesInput, Prisma.UserUncheckedCreateWithoutLessonProgressesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLessonProgressesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLessonProgressesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLessonProgressesInput, Prisma.UserUncheckedCreateWithoutLessonProgressesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLessonProgressesInput
+  upsert?: Prisma.UserUpsertWithoutLessonProgressesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLessonProgressesInput, Prisma.UserUpdateWithoutLessonProgressesInput>, Prisma.UserUncheckedUpdateWithoutLessonProgressesInput>
+}
+
+export type UserCreateNestedOneWithoutForumThreadsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutForumThreadsInput, Prisma.UserUncheckedCreateWithoutForumThreadsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumThreadsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutForumThreadsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutForumThreadsInput, Prisma.UserUncheckedCreateWithoutForumThreadsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumThreadsInput
+  upsert?: Prisma.UserUpsertWithoutForumThreadsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutForumThreadsInput, Prisma.UserUpdateWithoutForumThreadsInput>, Prisma.UserUncheckedUpdateWithoutForumThreadsInput>
+}
+
+export type UserCreateNestedOneWithoutForumPostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutForumPostsInput, Prisma.UserUncheckedCreateWithoutForumPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutForumPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutForumPostsInput, Prisma.UserUncheckedCreateWithoutForumPostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutForumPostsInput
+  upsert?: Prisma.UserUpsertWithoutForumPostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutForumPostsInput, Prisma.UserUpdateWithoutForumPostsInput>, Prisma.UserUncheckedUpdateWithoutForumPostsInput>
+}
+
+export type UserCreateWithoutCourseUsersInput = {
+  id?: string
+  username: string
+  email: string
+  role?: $Enums.Role
+  hashedPassword: string
+  currentExp?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lessonProgresses?: Prisma.LessonProgressCreateNestedManyWithoutUserInput
+  forumThreads?: Prisma.ForumThreadCreateNestedManyWithoutUserInput
+  forumPosts?: Prisma.ForumPostCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCourseUsersInput = {
+  id?: string
+  username: string
+  email: string
+  role?: $Enums.Role
+  hashedPassword: string
+  currentExp?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lessonProgresses?: Prisma.LessonProgressUncheckedCreateNestedManyWithoutUserInput
+  forumThreads?: Prisma.ForumThreadUncheckedCreateNestedManyWithoutUserInput
+  forumPosts?: Prisma.ForumPostUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCourseUsersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCourseUsersInput, Prisma.UserUncheckedCreateWithoutCourseUsersInput>
+}
+
+export type UserUpsertWithoutCourseUsersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCourseUsersInput, Prisma.UserUncheckedUpdateWithoutCourseUsersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCourseUsersInput, Prisma.UserUncheckedCreateWithoutCourseUsersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCourseUsersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCourseUsersInput, Prisma.UserUncheckedUpdateWithoutCourseUsersInput>
+}
+
+export type UserUpdateWithoutCourseUsersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  currentExp?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lessonProgresses?: Prisma.LessonProgressUpdateManyWithoutUserNestedInput
+  forumThreads?: Prisma.ForumThreadUpdateManyWithoutUserNestedInput
+  forumPosts?: Prisma.ForumPostUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCourseUsersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  currentExp?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lessonProgresses?: Prisma.LessonProgressUncheckedUpdateManyWithoutUserNestedInput
+  forumThreads?: Prisma.ForumThreadUncheckedUpdateManyWithoutUserNestedInput
+  forumPosts?: Prisma.ForumPostUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutLessonProgressesInput = {
+  id?: string
+  username: string
+  email: string
+  role?: $Enums.Role
+  hashedPassword: string
+  currentExp?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  courseUsers?: Prisma.CourseUserCreateNestedManyWithoutUserInput
+  forumThreads?: Prisma.ForumThreadCreateNestedManyWithoutUserInput
+  forumPosts?: Prisma.ForumPostCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLessonProgressesInput = {
+  id?: string
+  username: string
+  email: string
+  role?: $Enums.Role
+  hashedPassword: string
+  currentExp?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  courseUsers?: Prisma.CourseUserUncheckedCreateNestedManyWithoutUserInput
+  forumThreads?: Prisma.ForumThreadUncheckedCreateNestedManyWithoutUserInput
+  forumPosts?: Prisma.ForumPostUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLessonProgressesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLessonProgressesInput, Prisma.UserUncheckedCreateWithoutLessonProgressesInput>
+}
+
+export type UserUpsertWithoutLessonProgressesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLessonProgressesInput, Prisma.UserUncheckedUpdateWithoutLessonProgressesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLessonProgressesInput, Prisma.UserUncheckedCreateWithoutLessonProgressesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLessonProgressesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLessonProgressesInput, Prisma.UserUncheckedUpdateWithoutLessonProgressesInput>
+}
+
+export type UserUpdateWithoutLessonProgressesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  currentExp?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  courseUsers?: Prisma.CourseUserUpdateManyWithoutUserNestedInput
+  forumThreads?: Prisma.ForumThreadUpdateManyWithoutUserNestedInput
+  forumPosts?: Prisma.ForumPostUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLessonProgressesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  currentExp?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  courseUsers?: Prisma.CourseUserUncheckedUpdateManyWithoutUserNestedInput
+  forumThreads?: Prisma.ForumThreadUncheckedUpdateManyWithoutUserNestedInput
+  forumPosts?: Prisma.ForumPostUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutForumThreadsInput = {
+  id?: string
+  username: string
+  email: string
+  role?: $Enums.Role
+  hashedPassword: string
+  currentExp?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  courseUsers?: Prisma.CourseUserCreateNestedManyWithoutUserInput
+  lessonProgresses?: Prisma.LessonProgressCreateNestedManyWithoutUserInput
+  forumPosts?: Prisma.ForumPostCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutForumThreadsInput = {
+  id?: string
+  username: string
+  email: string
+  role?: $Enums.Role
+  hashedPassword: string
+  currentExp?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  courseUsers?: Prisma.CourseUserUncheckedCreateNestedManyWithoutUserInput
+  lessonProgresses?: Prisma.LessonProgressUncheckedCreateNestedManyWithoutUserInput
+  forumPosts?: Prisma.ForumPostUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutForumThreadsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutForumThreadsInput, Prisma.UserUncheckedCreateWithoutForumThreadsInput>
+}
+
+export type UserUpsertWithoutForumThreadsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutForumThreadsInput, Prisma.UserUncheckedUpdateWithoutForumThreadsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutForumThreadsInput, Prisma.UserUncheckedCreateWithoutForumThreadsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutForumThreadsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutForumThreadsInput, Prisma.UserUncheckedUpdateWithoutForumThreadsInput>
+}
+
+export type UserUpdateWithoutForumThreadsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  currentExp?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  courseUsers?: Prisma.CourseUserUpdateManyWithoutUserNestedInput
+  lessonProgresses?: Prisma.LessonProgressUpdateManyWithoutUserNestedInput
+  forumPosts?: Prisma.ForumPostUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutForumThreadsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  currentExp?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  courseUsers?: Prisma.CourseUserUncheckedUpdateManyWithoutUserNestedInput
+  lessonProgresses?: Prisma.LessonProgressUncheckedUpdateManyWithoutUserNestedInput
+  forumPosts?: Prisma.ForumPostUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutForumPostsInput = {
+  id?: string
+  username: string
+  email: string
+  role?: $Enums.Role
+  hashedPassword: string
+  currentExp?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  courseUsers?: Prisma.CourseUserCreateNestedManyWithoutUserInput
+  lessonProgresses?: Prisma.LessonProgressCreateNestedManyWithoutUserInput
+  forumThreads?: Prisma.ForumThreadCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutForumPostsInput = {
+  id?: string
+  username: string
+  email: string
+  role?: $Enums.Role
+  hashedPassword: string
+  currentExp?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  courseUsers?: Prisma.CourseUserUncheckedCreateNestedManyWithoutUserInput
+  lessonProgresses?: Prisma.LessonProgressUncheckedCreateNestedManyWithoutUserInput
+  forumThreads?: Prisma.ForumThreadUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutForumPostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutForumPostsInput, Prisma.UserUncheckedCreateWithoutForumPostsInput>
+}
+
+export type UserUpsertWithoutForumPostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutForumPostsInput, Prisma.UserUncheckedUpdateWithoutForumPostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutForumPostsInput, Prisma.UserUncheckedCreateWithoutForumPostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutForumPostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutForumPostsInput, Prisma.UserUncheckedUpdateWithoutForumPostsInput>
+}
+
+export type UserUpdateWithoutForumPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  currentExp?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  courseUsers?: Prisma.CourseUserUpdateManyWithoutUserNestedInput
+  lessonProgresses?: Prisma.LessonProgressUpdateManyWithoutUserNestedInput
+  forumThreads?: Prisma.ForumThreadUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutForumPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  currentExp?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  courseUsers?: Prisma.CourseUserUncheckedUpdateManyWithoutUserNestedInput
+  lessonProgresses?: Prisma.LessonProgressUncheckedUpdateManyWithoutUserNestedInput
+  forumThreads?: Prisma.ForumThreadUncheckedUpdateManyWithoutUserNestedInput
+}
+
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  courseUsers: number
+  lessonProgresses: number
+  forumThreads: number
+  forumPosts: number
+}
+
+export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  courseUsers?: boolean | UserCountOutputTypeCountCourseUsersArgs
+  lessonProgresses?: boolean | UserCountOutputTypeCountLessonProgressesArgs
+  forumThreads?: boolean | UserCountOutputTypeCountForumThreadsArgs
+  forumPosts?: boolean | UserCountOutputTypeCountForumPostsArgs
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCourseUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CourseUserWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLessonProgressesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LessonProgressWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountForumThreadsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ForumThreadWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountForumPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ForumPostWhereInput
+}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   username?: boolean
   email?: boolean
+  role?: boolean
   hashedPassword?: boolean
   currentExp?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  courseUsers?: boolean | Prisma.User$courseUsersArgs<ExtArgs>
+  lessonProgresses?: boolean | Prisma.User$lessonProgressesArgs<ExtArgs>
+  forumThreads?: boolean | Prisma.User$forumThreadsArgs<ExtArgs>
+  forumPosts?: boolean | Prisma.User$forumPostsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   username?: boolean
   email?: boolean
+  role?: boolean
   hashedPassword?: boolean
   currentExp?: boolean
   createdAt?: boolean
@@ -435,6 +901,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   username?: boolean
   email?: boolean
+  role?: boolean
   hashedPassword?: boolean
   currentExp?: boolean
   createdAt?: boolean
@@ -445,21 +912,37 @@ export type UserSelectScalar = {
   id?: boolean
   username?: boolean
   email?: boolean
+  role?: boolean
   hashedPassword?: boolean
   currentExp?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "hashedPassword" | "currentExp" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "role" | "hashedPassword" | "currentExp" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  courseUsers?: boolean | Prisma.User$courseUsersArgs<ExtArgs>
+  lessonProgresses?: boolean | Prisma.User$lessonProgressesArgs<ExtArgs>
+  forumThreads?: boolean | Prisma.User$forumThreadsArgs<ExtArgs>
+  forumPosts?: boolean | Prisma.User$forumPostsArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {}
+  objects: {
+    courseUsers: Prisma.$CourseUserPayload<ExtArgs>[]
+    lessonProgresses: Prisma.$LessonProgressPayload<ExtArgs>[]
+    forumThreads: Prisma.$ForumThreadPayload<ExtArgs>[]
+    forumPosts: Prisma.$ForumPostPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     username: string
     email: string
+    role: $Enums.Role
     hashedPassword: string
     currentExp: number
     createdAt: Date
@@ -858,6 +1341,10 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  courseUsers<T extends Prisma.User$courseUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$courseUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CourseUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  lessonProgresses<T extends Prisma.User$lessonProgressesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$lessonProgressesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LessonProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  forumThreads<T extends Prisma.User$forumThreadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$forumThreadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumThreadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  forumPosts<T extends Prisma.User$forumPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$forumPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ForumPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -890,6 +1377,7 @@ export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
   readonly username: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
+  readonly role: Prisma.FieldRef<"User", 'Role'>
   readonly hashedPassword: Prisma.FieldRef<"User", 'String'>
   readonly currentExp: Prisma.FieldRef<"User", 'Int'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
@@ -911,6 +1399,10 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -929,6 +1421,10 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -946,6 +1442,10 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -995,6 +1495,10 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -1043,6 +1547,10 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which Users to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -1085,6 +1593,10 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to create a User.
    */
@@ -1133,6 +1645,10 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -1200,6 +1716,10 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1226,6 +1746,10 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1246,6 +1770,102 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.courseUsers
+ */
+export type User$courseUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CourseUser
+   */
+  select?: Prisma.CourseUserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CourseUser
+   */
+  omit?: Prisma.CourseUserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CourseUserInclude<ExtArgs> | null
+  where?: Prisma.CourseUserWhereInput
+  orderBy?: Prisma.CourseUserOrderByWithRelationInput | Prisma.CourseUserOrderByWithRelationInput[]
+  cursor?: Prisma.CourseUserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CourseUserScalarFieldEnum | Prisma.CourseUserScalarFieldEnum[]
+}
+
+/**
+ * User.lessonProgresses
+ */
+export type User$lessonProgressesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LessonProgress
+   */
+  select?: Prisma.LessonProgressSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LessonProgress
+   */
+  omit?: Prisma.LessonProgressOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LessonProgressInclude<ExtArgs> | null
+  where?: Prisma.LessonProgressWhereInput
+  orderBy?: Prisma.LessonProgressOrderByWithRelationInput | Prisma.LessonProgressOrderByWithRelationInput[]
+  cursor?: Prisma.LessonProgressWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LessonProgressScalarFieldEnum | Prisma.LessonProgressScalarFieldEnum[]
+}
+
+/**
+ * User.forumThreads
+ */
+export type User$forumThreadsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ForumThread
+   */
+  select?: Prisma.ForumThreadSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ForumThread
+   */
+  omit?: Prisma.ForumThreadOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ForumThreadInclude<ExtArgs> | null
+  where?: Prisma.ForumThreadWhereInput
+  orderBy?: Prisma.ForumThreadOrderByWithRelationInput | Prisma.ForumThreadOrderByWithRelationInput[]
+  cursor?: Prisma.ForumThreadWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ForumThreadScalarFieldEnum | Prisma.ForumThreadScalarFieldEnum[]
+}
+
+/**
+ * User.forumPosts
+ */
+export type User$forumPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ForumPost
+   */
+  select?: Prisma.ForumPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ForumPost
+   */
+  omit?: Prisma.ForumPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ForumPostInclude<ExtArgs> | null
+  where?: Prisma.ForumPostWhereInput
+  orderBy?: Prisma.ForumPostOrderByWithRelationInput | Prisma.ForumPostOrderByWithRelationInput[]
+  cursor?: Prisma.ForumPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ForumPostScalarFieldEnum | Prisma.ForumPostScalarFieldEnum[]
+}
+
+/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1257,4 +1877,8 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
 }

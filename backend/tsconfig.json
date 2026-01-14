@@ -9,5 +9,6 @@
     "outDir": "./dist",
     "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["src/**/*", "types/**/*", "middleware/**/*", "controllers/**/*", "routes/**/*"]
+  "include": ["src/**/*", "types/**/*",
+    "src/middleware/**/*", "controllers/**/*", "routes/**/*"]
 }
