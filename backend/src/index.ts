@@ -1,10 +1,13 @@
 import express from 'express';
-import prisma from "./database/prisma";
+import {authMiddleware} from "../middleware/authMiddleware";
 const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+
+
+app.get('/', authMiddleware, (req, res) => {
+    console.log(req.user);
     res.send('Hello World');
 })
 
