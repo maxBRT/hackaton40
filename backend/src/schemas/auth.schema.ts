@@ -2,8 +2,8 @@ import { z } from "zod";
 import { registry } from "../docs/openapi.registry";
 
 export const LoginSchema = z.object({
-  email: z.string().email().openapi({ example: "user@example.com" }),
-  password: z.string().min(6).openapi({ example: "password123" }),
+  email: z.string().openapi({ example: "user@example.com" }),
+  password: z.string().min(5).openapi({ example: "password123" }),
 });
 
 export const RegisterSchema = LoginSchema.extend({
@@ -13,11 +13,11 @@ export const RegisterSchema = LoginSchema.extend({
 export const UserSchema = z.object({
   id: z.string().openapi({ example: "cl01234567890abcdef" }),
   username: z.string().openapi({ example: "johndoe" }),
-  email: z.string().email().openapi({ example: "user@example.com" }),
+  email: z.string().openapi({ example: "user@example.com" }),
   role: z.enum(["USER", "ADMIN"]).openapi({ example: "USER" }),
   currentExp: z.number().openapi({ example: 100 }),
-  createdAt: z.string().datetime(),
-  updatedAt: z.string().datetime(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
 });
 
 registry.registerPath({
