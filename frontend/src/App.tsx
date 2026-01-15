@@ -1,4 +1,4 @@
-import Dashboard from "./pages/Dashboard";
+import './index.css';
 
 export default function App() {
    
@@ -11,4 +11,3 @@ export default function App() {
 
 
   
-}
