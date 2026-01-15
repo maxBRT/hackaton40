@@ -1,42 +1,48 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { apiFetch } from "../lib/api";
+import axios from "axios";
+
+interface LoginResponse {
+    data?: Record<string, string>;
+    message?: string;
+    success?: boolean;
+}
+
+interface LoginRequest {
+    email: string;
+    password: string;
+}
 
 export default function Login() {
   const navigate = useNavigate();
-
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  async function handleSubmit(e: React.FormEvent) {
+  
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
+    setError(null); 
     setLoading(true);
-
     try {
-
-      const data: any = await apiFetch("/auth/login", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-      });
-
-      const token = data?.token ?? data?.accessToken ?? data?.jwt;
-
-      if (!token) {
-        throw new Error("Réponse invalide : token manquant");
-      }
-
-      localStorage.setItem("token", token);
-      navigate("/dashboard");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Erreur");
-    } finally {
-      setLoading(false);
+        const request: LoginRequest = { email, password };
+        const response = await axios.post<LoginResponse>("/api/auth/login", request);
+        const responseData = response.data;
+        if (!responseData.success) {
+          setError(responseData.message ?? null);
+        }
+        if (responseData.data?.token) {
+            localStorage.setItem("token", responseData.data.token);
+            setLoading(false);
+            navigate("/dashboard");
+          }
+    }catch (error: any) {
+        console.error(error);
+        setError(error.message);
+        setLoading(false);
     }
-  }
+  } 
 
   return (
     <div style={{ padding: 24 }}>
