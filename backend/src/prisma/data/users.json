@@ -1,0 +1,32 @@
+[
+  {
+    "id": "user_clj1",
+    "username": "jean_dupont",
+    "email": "jean.dupont@example.com",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpassword123",
+    "currentExp": 150,
+    "createdAt": "2025-10-01T10:00:00Z",
+    "updatedAt": "2025-10-01T10:00:00Z"
+  },
+  {
+    "id": "user_clj2",
+    "username": "marie_curie",
+    "email": "marie.curie@science.fr",
+    "role": "ADMIN",
+    "hashedPassword": "$2b$10$hashedpassword456",
+    "currentExp": 1200,
+    "createdAt": "2025-09-15T08:30:00Z",
+    "updatedAt": "2025-09-15T08:30:00Z"
+  },
+  {
+    "id": "user_clkfm",
+    "username": "admin",
+    "email": "admin@relaxcafe.com",
+    "role": "ADMIN",
+    "hashedPassword": "ADMIN",
+    "currentExp": 1200,
+    "createdAt": "2025-09-15T08:30:00Z",
+    "updatedAt": "2025-09-15T08:30:00Z"
+  }
+]

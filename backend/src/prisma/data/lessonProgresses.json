@@ -1,0 +1,16 @@
+[
+  {
+    "userId": "user_clj1",
+    "lessonId": "lesson_react_intro",
+    "isCompleted": true,
+    "completedAt": "2025-12-25T10:00:00Z",
+    "xpEarned": 50
+  },
+  {
+    "userId": "user_clj1",
+    "lessonId": "lesson_python_vars",
+    "isCompleted": true,
+    "completedAt": "2025-12-19T15:00:00Z",
+    "xpEarned": 100
+  }
+]

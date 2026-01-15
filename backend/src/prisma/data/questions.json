@@ -1,0 +1,20 @@
+[
+  {
+    "id": 100,
+    "answers": ["Une bibliothèque JavaScript", "Un framework complet", "Un langage de programmation", "Une base de données"],
+    "correctAnswer": 0,
+    "quizId": "quiz_react_intro"
+  },
+  {
+    "id": 200,
+    "answers": ["Facebook", "Google", "Microsoft", "Twitter"],
+    "correctAnswer": 0,
+    "quizId": "quiz_react_intro"
+  },
+  {
+    "id": 300,
+    "answers": ["x = 5", "int x = 5", "var x = 5", "let x = 5"],
+    "correctAnswer": 0,
+    "quizId": "quiz_python_vars"
+  }
+]

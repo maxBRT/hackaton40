@@ -1,0 +1,32 @@
+[
+  {
+    "id": "lesson_react_intro",
+    "title": "Qu'est-ce que React ?",
+    "difficulty": "BEGINNER",
+    "content": "# Qu'est-ce que React ?\n\nReact est une **bibliothèque JavaScript** populaire pour construire des interfaces utilisateur.\n\n### Points clés :\n- Créé par Facebook\n- Basé sur les composants\n- Utilise le Virtual DOM\n\n```jsx\nfunction Welcome() {\n  return <h1>Bonjour tout le monde !</h1>;\n}\n```",
+    "position": 1,
+    "moduleId": "mod_react_1",
+    "createdAt": "2025-08-11T09:00:00Z",
+    "updatedAt": "2025-08-11T09:00:00Z"
+  },
+  {
+    "id": "lesson_react_setup",
+    "title": "Installation de React",
+    "difficulty": "BEGINNER",
+    "content": "# Installation de React\n\nPour commencer un nouveau projet React, nous utilisons souvent `Vite`.\n\n### Commande :\n```bash\nnpm create vite@latest mon-projet -- --template react\ncd mon-projet\nnpm install\nnpm run dev\n```",
+    "position": 2,
+    "moduleId": "mod_react_1",
+    "createdAt": "2025-08-11T10:00:00Z",
+    "updatedAt": "2025-08-11T10:00:00Z"
+  },
+  {
+    "id": "lesson_python_vars",
+    "title": "Variables en Python",
+    "difficulty": "BEGINNER",
+    "content": "# Les variables en Python\n\nEn Python, on déclare une variable sans spécifier son type.\n\n### Exemple :\n```python\nnom = \"Jean\"\nage = 25\nest_etudiant = True\n\nprint(f\"{nom} a {age} ans.\")\n```",
+    "position": 1,
+    "moduleId": "mod_python_1",
+    "createdAt": "2025-08-16T10:00:00Z",
+    "updatedAt": "2025-08-16T10:00:00Z"
+  }
+]

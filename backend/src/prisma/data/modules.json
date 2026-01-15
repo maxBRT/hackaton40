@@ -1,0 +1,20 @@
+[
+  {
+    "id": "mod_react_1",
+    "title": "Introduction et Installation",
+    "position": 1,
+    "courseId": "course_react"
+  },
+  {
+    "id": "mod_react_2",
+    "title": "Composants et Props",
+    "position": 2,
+    "courseId": "course_react"
+  },
+  {
+    "id": "mod_python_1",
+    "title": "Variables et Types",
+    "position": 1,
+    "courseId": "course_python"
+  }
+]
