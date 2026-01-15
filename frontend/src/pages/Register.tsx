@@ -1,10 +1,23 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { apiFetch } from "../lib/api";
+import axios from "axios";
+
+interface RegisterResponse {
+  data?: Record<string, any>;
+  message?: string;
+  success?: boolean;
+}
+
+interface RegisterRequest {
+  username: string;
+  email: string;
+  password: string;
+}
 
 export default function Register() {
   const navigate = useNavigate();
-
+  
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -15,32 +28,25 @@ export default function Register() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
-
     if (password !== confirmPassword) {
       setError("Les mots de passe ne correspondent pas.");
       return;
     }
-
     setLoading(true);
-
     try {
-      // Pour l’instant: any, types plus tard quand le backend sera stable
-      const data: any = await apiFetch("/auth/register", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-      });
-
-      // Supporte plusieurs formats de réponse possibles
-      const token = data?.token ?? data?.accessToken ?? data?.jwt;
-
-      // Si le backend renvoie un token, on connecte direct
-      if (token) {
-        localStorage.setItem("token", token);
+      const request: RegisterRequest = { username, email, password };
+      const response = await axios.post<RegisterResponse | null>("api/auth/register", request);
+      const responseData = response.data;
+      if (!responseData?.success) {
+        console.error(responseData);
+        setError(responseData?.message ?? "Erreur");
+        return;
+      }
+      if (responseData.data?.token) {
+        localStorage.setItem("token", responseData.data.token);
         navigate("/dashboard");
         return;
       }
-
-      // Sinon, on renvoie vers login (ex: backend renvoie juste "ok")
       navigate("/login");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur");
@@ -54,6 +60,16 @@ export default function Register() {
       <h1>Inscription</h1>
 
       <form onSubmit={handleSubmit}>
+        <div> 
+          <label>Nom d'utilisateur</label>
+          <br />
+          <input
+            type={"text"}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
         <div>
           <label>Email</label>
           <br />
