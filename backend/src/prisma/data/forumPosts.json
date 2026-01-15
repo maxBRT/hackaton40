@@ -1,0 +1,11 @@
+[
+  {
+    "id": "post_react_resp_1",
+    "title": "Vérifie ta version de Node",
+    "content": "Est-ce que tu as bien installé Node.js en version LTS ? Vite nécessite une version récente.",
+    "userId": "user_clj2",
+    "threadId": "thread_react_help",
+    "createdAt": "2025-12-26T15:30:00Z",
+    "updatedAt": "2025-12-26T15:30:00Z"
+  }
+]

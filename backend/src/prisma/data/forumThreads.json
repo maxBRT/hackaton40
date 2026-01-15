@@ -1,0 +1,11 @@
+[
+  {
+    "id": "thread_react_help",
+    "title": "Besoin d'aide avec l'installation",
+    "content": "Bonjour, je n'arrive pas à lancer `npm run dev` après l'installation de Vite. Quelqu'un a une idée ?",
+    "userId": "user_clj1",
+    "courseId": "course_react",
+    "createdAt": "2025-12-26T14:00:00Z",
+    "updatedAt": "2025-12-26T14:00:00Z"
+  }
+]

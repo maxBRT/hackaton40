@@ -1,0 +1,14 @@
+[
+  {
+    "userId": "user_clj1",
+    "courseId": "course_react",
+    "completed": false,
+    "completedAt": null
+  },
+  {
+    "userId": "user_clj1",
+    "courseId": "course_python",
+    "completed": true,
+    "completedAt": "2025-12-20T16:00:00Z"
+  }
+]

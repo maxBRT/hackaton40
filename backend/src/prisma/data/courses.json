@@ -1,0 +1,35 @@
+[
+  {
+    "id": "course_react",
+    "title": "React pour les débutants",
+    "description": "Apprenez les bases de la bibliothèque React.",
+    "category": "Frontend",
+    "level": "BEGINNER",
+    "isPublished": true,
+    "learningPathId": "lp_web",
+    "createdAt": "2025-08-10T14:00:00Z",
+    "updatedAt": "2025-08-10T14:00:00Z"
+  },
+  {
+    "id": "course_node",
+    "title": "Backend avec Node.js",
+    "description": "Créez des API robustes avec Express et Prisma.",
+    "category": "Backend",
+    "level": "INTERMEDIATE",
+    "isPublished": true,
+    "learningPathId": "lp_web",
+    "createdAt": "2025-08-12T10:00:00Z",
+    "updatedAt": "2025-08-12T10:00:00Z"
+  },
+  {
+    "id": "course_python",
+    "title": "Bases de Python",
+    "description": "Le langage idéal pour commencer la data science.",
+    "category": "Data Science",
+    "level": "BEGINNER",
+    "isPublished": true,
+    "learningPathId": "lp_data",
+    "createdAt": "2025-08-15T11:00:00Z",
+    "updatedAt": "2025-08-15T11:00:00Z"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "quiz_react_intro",
+    "title": "Vérification des connaissances : Introduction React",
+    "description": "Un petit test pour voir si vous avez compris les bases.",
+    "status": true,
+    "lessonId": "lesson_react_intro"
+  },
+  {
+    "id": "quiz_python_vars",
+    "title": "Quiz sur les variables Python",
+    "description": "Testez votre compréhension des variables et des types.",
+    "status": true,
+    "lessonId": "lesson_python_vars"
+  }
+]

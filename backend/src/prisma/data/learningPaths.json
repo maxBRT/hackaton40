@@ -1,0 +1,18 @@
+[
+  {
+    "id": "lp_web",
+    "title": "Développement Web Fullstack",
+    "description": "Apprenez à créer des applications web modernes de A à Z.",
+    "author": "L'Équipe Pédagogique",
+    "createdAt": "2025-08-01T12:00:00Z",
+    "updatedAt": "2025-08-01T12:00:00Z"
+  },
+  {
+    "id": "lp_data",
+    "title": "Introduction à la Data Science",
+    "description": "Maîtrisez les outils d'analyse de données et le Machine Learning.",
+    "author": "Dr. Marie Curie",
+    "createdAt": "2025-08-05T09:00:00Z",
+    "updatedAt": "2025-08-05T09:00:00Z"
+  }
+]
