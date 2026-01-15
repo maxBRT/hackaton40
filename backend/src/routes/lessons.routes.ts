@@ -7,7 +7,6 @@ import {
 import { completeLesson } from "../controllers/lessons.controller";
 import { authMiddleware } from "../middleware/authMiddleware";
 
-
 const router = Router();
 
 router.get("/", getLessons);
