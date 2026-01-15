@@ -23,7 +23,6 @@ app.use("/api/courses", CoursesRoutes);
 app.use("/api/modules", ModulesRoutes);
 app.use("/api/lessons", LessonsRoutes);
 app.use("/api", ProgressRoutes);
-
 app.use("/enroll", EnrollRoutes);
 app.use("/quiz", QuizRoutes);
 app.use("/forum-treads", authMiddleware, forumThreadsRoutes);
