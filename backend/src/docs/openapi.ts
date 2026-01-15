@@ -7,7 +7,7 @@ export function generateOpenApiDocument() {
   return generator.generateDocument({
     openapi: "3.0.0",
     info: {
-      title: "Your API",
+      title: "LearnHub API",
       version: "1.0.0",
     },
   });

@@ -1,8 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { swaggerRouter } from "./docs/swagger";
+import  swaggerRouter from "./routes/swagger.routes";
 import "./schemas/course.schema";
+import "./schemas/path.schema";
+import "./schemas/module.schema";
+import "./schemas/lesson.schema";
+import "./schemas/auth.schema";
+import "./schemas/quiz.schema";
+import "./schemas/enroll.schema";
+import "./schemas/forum.schema";
+import "./schemas/progress.schema";
 import { authMiddleware } from "./middleware/authMiddleware";
 
 import UserRoutes from "./routes/user.routes";
@@ -38,15 +46,10 @@ app.use("/api/modules", ModulesRoutes);
 app.use("/api/lessons", LessonsRoutes);
 app.use("/api/enroll", EnrollRoutes);
 app.use("/api/quiz", QuizRoutes);
-app.use("/api", swaggerRouter);
-
-// Forum + Progress (protected where needed)
 app.use("/api/forum-threads", authMiddleware, forumRoutes);
 app.use("/api/progress", authMiddleware, ProgressRoutes);
+app.use("/api", swaggerRouter);
 
-app.get("/api/", (req, res) => {
-  res.json({ message: "Hello World" });
-});
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server is running on port 3000");
