@@ -1,18 +1,32 @@
 import { ZodSchema } from "zod";
 import { Request, Response, NextFunction } from "express";
 
-export function validate(schema: ZodSchema, property: "body" | "query" | "params" = "body") {
-  return (req: Request, res: Response, next: NextFunction) => {
-    const result = schema.safeParse(req[property]);
+type ValidationTargets = {
+  body?: ZodSchema;
+  query?: ZodSchema;
+  params?: ZodSchema;
+};
 
-    if (!result.success) {
-      return res.status(400).json({
-        success: false,
-        errors: result.error.format(),
-      });
+export function validate(schemas: ValidationTargets | ZodSchema, property: "body" | "query" | "params" = "body") {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const targets: ValidationTargets =
+      typeof (schemas as any).safeParse === "function"
+        ? { [property]: schemas as ZodSchema }
+        : (schemas as ValidationTargets);
+
+    for (const [prop, schema] of Object.entries(targets)) {
+      const result = (schema as ZodSchema).safeParse(req[prop as keyof ValidationTargets]);
+
+      if (!result.success) {
+        return res.status(400).json({
+          success: false,
+          errors: result.error.format(),
+        });
+      }
+
+      req[prop as keyof Request] = result.data;
     }
-    
-    req[property] = result.data;
+
     next();
   };
 }
