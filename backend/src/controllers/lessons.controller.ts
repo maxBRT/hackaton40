@@ -156,6 +156,7 @@ export async function completeLesson(req: Request, res: Response) {
         if (!userId) {
             return res.status(401).json({ success: false, message: "Pas autorisé" });
         }
+        const userId = (req as any).user?.userId as string;
 
         // Vérification de l’existence de la leçon
         const lesson = await prisma.lesson.findUnique({

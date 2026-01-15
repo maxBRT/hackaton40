@@ -32,7 +32,7 @@ export const register = async (req: Request<any, RegisterBody>, res: Response) =
                 hashedPassword: hashedPassword
             }
         });
-        const token = createJWT(newUser.id, newUser.email);
+        const token = createJWT(newUser.id, newUser.email, newUser.role);
 
         return res.status(201).json({
             success: true,
@@ -72,7 +72,7 @@ export const login = async (req: Request<any, LoginBody>, res: Response) => {
         if (!isPasswordValid) {
             return res.status(401).json({message: "Invalid password"});
         }
-        const token = createJWT(user.id, user.email);
+        const token = createJWT(user.id, user.email, user.role);
         res.status(200).json({
             success: true,
             message: "User logged in successfully",
@@ -130,11 +130,12 @@ export const userInfo = async (req: Request, res: Response) => {
 
 
 
-const createJWT = (userId: string, userEmail: string): string => {
+const createJWT = (userId: string, userEmail: string, role: string): string => {
     return jwt.sign(
         {
             userId: userId,
-            userEmail: userEmail
+            userEmail: userEmail,
+            role: role
         },
         process.env.JWT_SECRET || "super_secret_key",
         {expiresIn: '1h'}
