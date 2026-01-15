@@ -7,26 +7,21 @@ import prisma from "../database/prisma";
 export async function getLessons(req: Request, res: Response) {
   try {
     // Lecture et validation des query params
-    const courseId =
-      typeof req.query.courseId === "string" ? req.query.courseId : undefined;
+    const { courseId, published, q } = req.query as any;
 
-    const published =
-      typeof req.query.published === "string"
-        ? req.query.published === "true"
-        : undefined;
-
-    const q = typeof req.query.q === "string" ? req.query.q.trim() : undefined;
+    const isPublished = published !== undefined ? published === "true" : undefined;
+    const searchQuery = typeof q === "string" ? q.trim() : undefined;
 
     // Construction dynamique du WHERE
     const where: any = {};
 
     if (courseId) where.courseId = courseId;
-    if (published !== undefined) where.published = published;
+    if (isPublished !== undefined) where.published = isPublished;
 
-    if (q) {
+    if (searchQuery) {
       where.OR = [
-        { title: { contains: q, mode: "insensitive" } },
-        { content: { contains: q, mode: "insensitive" } },
+        { title: { contains: searchQuery, mode: "insensitive" } },
+        { content: { contains: searchQuery, mode: "insensitive" } },
       ];
     }
 
@@ -61,21 +56,6 @@ export async function getLessons(req: Request, res: Response) {
 export async function createLesson(req: Request, res: Response) {
   try {
     const { title, content, moduleId, position, difficulty } = req.body;
-
-    if (!title || !content || !moduleId || !difficulty) {
-      return res.status(400).json({
-        success: false,
-        message: "title, content, moduleId et difficulty sont requis",
-      });
-    }
-
-    const allowed = ["BEGINNER", "INTERMEDIATE", "ADVANCED"];
-    if (!allowed.includes(difficulty)) {
-      return res.status(400).json({
-        success: false,
-        message: `difficulty invalide (valeurs: ${allowed.join(", ")})`,
-      });
-    }
 
     const lesson = await prisma.lesson.create({
       data: {
@@ -152,10 +132,6 @@ export async function completeLesson(req: Request, res: Response) {
 
         // Identification de l’utilisateur et validation JWT
         const lessonId = req.params.id as string;
-        const userId = (req as any).user?.id as string | undefined;
-        if (!userId) {
-            return res.status(401).json({ success: false, message: "Pas autorisé" });
-        }
         const userId = (req as any).user?.userId as string;
 
         // Vérification de l’existence de la leçon

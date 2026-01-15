@@ -11,11 +11,6 @@ export const enroll = async (req: Request, res: Response) => {
                 message: "User not found"});
         }
         const courseId = req.params.id;
-        if (!courseId || typeof courseId !== 'string') {
-            return res.status(400).json(
-                { success: false, message: "Valid Course ID is required" }
-            );
-        }
         const course = await prisma.course.findUnique({ where: { id: courseId } });
         if (!course) {
             return res.status(404).json({ success: false, message: "Course not found" });
@@ -38,9 +33,6 @@ export const enroll = async (req: Request, res: Response) => {
 export const unenroll = async (req: Request, res: Response) => {
     try {
         const courseId = req.params.id;
-        if (!courseId || typeof courseId !== 'string') {
-            return res.status(400).json({success: false, message: "Valid Course ID is required"});
-        }
         const course = await prisma.course.findUnique({where: {id: courseId}});
         if (!course) {
             return res.status(404).json({success: false, message: "Course not found"});

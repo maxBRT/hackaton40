@@ -4,9 +4,6 @@ import prisma from "../database/prisma";
 export const getQuiz = async (req: Request, res: Response) => {
     try{
         const lessonId = req.params.id;
-        if (!lessonId || typeof lessonId !== 'string') {
-            return res.status(400).json({success: false, message: "Valid Lesson ID is required"});
-        }
         const lesson = await prisma.lesson.findUnique({where: {id: lessonId}, include: {quizzes: true}});
         if (!lesson) {
             return res.status(404).json({success: false, message: "Lesson not found"});
@@ -39,13 +36,7 @@ export const createQuiz = async (req: Request, res: Response) => {
             return res.status(403).json({success: false, message: "Admin only"});   
         }
         const lessonId = req.params.id;
-        if (!lessonId || typeof lessonId !== 'string') {
-            return res.status(400).json({success: false, message: "Valid Lesson ID is required"});
-        }
         const data: CreateQuizBody = req.body;
-        if (!data.title || !data.description || !data.questions) {
-            return res.status(400).json({success: false, message: "All fields are required"});
-        }
         const quiz = await prisma.quiz.create({
             data: {
                title : data.title,

@@ -13,9 +13,6 @@ interface RegisterBody {
 export const register = async (req: Request<any, RegisterBody>, res: Response) => {
     try {
         const data: RegisterBody = req.body;
-        if (!data.username || !data.email || !data.password) {
-            return res.status(400).json({message: "All fields are required"});
-        }
 
         const existingUser = await prisma.user.findUnique({where: {email: data.email}});
         if (existingUser) {
@@ -61,9 +58,6 @@ interface LoginBody {
 export const login = async (req: Request<any, LoginBody>, res: Response) => {
     try {
         const data: LoginBody = req.body;
-        if (!data.email || !data.password) {
-            return res.status(400).json({message: "All fields are required"});
-        }
         const user = await prisma.user.findUnique({where: {email: data.email}});
         if (!user) {
             return res.status(404).json({message: "User not found"});

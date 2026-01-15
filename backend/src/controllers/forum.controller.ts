@@ -4,9 +4,6 @@ import prisma from "../database/prisma";
 export const listForumThreads = async (req: Request, res: Response) => {
     try {
         const courseId = req.params.id;
-        if (!courseId || typeof courseId !== 'string') {
-            return res.status(400).json({ status: "error", message: "Valid course ID is required" });
-        }
         const forumThreads = await prisma.forumThread.findMany({
             orderBy: { createdAt: "asc" },
             where: { courseId: courseId },
@@ -20,9 +17,6 @@ export const listForumThreads = async (req: Request, res: Response) => {
 
 export const getForumThread = async (req: Request, res: Response) => {
     const forumThreadId = req.params.id;
-    if (!forumThreadId || typeof forumThreadId !== 'string') {
-        return res.status(400).json({ status: "error", message: "Valid forumThread ID is required" });
-    }
     try {
         const forumThread = await prisma.forumThread.findUnique(
             { where: { id: forumThreadId } }
@@ -49,9 +43,6 @@ export const createForumThread = async (req: Request<any,  CreateForumThreadBody
         }
         const lessonId = req.params.id;
         const data: CreateForumThreadBody = req.body;
-        if (!data.title || !data.content || !data.courseId) {
-            return res.status(400).json({ status: "error", message: "All fields are required" });
-        }  
         const forumThread = await prisma.forumThread.create({ 
             data: {
                 title: data.title,
@@ -74,16 +65,7 @@ interface UpdateForumThreadBody {
 export const updateForumThread = async (req: Request<any,  UpdateForumThreadBody>, res: Response) => {
     try {
         const forumThreadId = req.params.id;
-        
-        if (!forumThreadId || typeof forumThreadId !== 'string') {
-            return res.status(400).json({ status: "error", message: "Valid forumThread ID is required" });
-        }
-        
         const data: UpdateForumThreadBody = req.body;
-        
-        if (!data.title || !data.content) {
-            return res.status(400).json({ status: "error", message: "All fields are required" });
-        }
         
         const forumThread = await prisma.forumThread.update({ 
             where: { id: forumThreadId }, 
@@ -100,9 +82,6 @@ export const updateForumThread = async (req: Request<any,  UpdateForumThreadBody
 export const deleteForumThread = async (req: Request, res: Response) => {
     try {
         const forumThreadId = req.params.id;
-        if (!forumThreadId || typeof forumThreadId !== 'string') {
-            return res.status(400).json({ status: "error", message: "Valid forumThread ID is required" });
-        }
         await prisma.forumThread.delete({ where: { id: forumThreadId } });
         return res.status(200).json({ status: "success" });
     } catch (error: any) {
@@ -114,9 +93,6 @@ export const deleteForumThread = async (req: Request, res: Response) => {
 export const listForumPosts = async (req: Request, res: Response) => {
     try {
         const threadId = req.params.id;
-        if (!threadId || typeof threadId !== 'string'){
-            return res.status(400).json({ status: "error", message: "Valid thread ID is required" });
-        }
         const thread = await prisma.forumThread.findUnique({ where: { id: threadId }, include: { posts : true } });
         return res.status(200).json({ status: "success", data: { thread: thread}})
     } catch (error: any) {
@@ -143,9 +119,6 @@ export const createForumPost = async (req: Request<any, CreateForumThreadBody>, 
             return res.status(404).json({ status: "error", message: "Thread not found" });
         }
         const data: CreateForumPostBody = req.body;
-        if (!data.title || !data.content) {
-            return res.status(400).json({ status: "error", message: "All fields are required" });
-        }
         const post = await prisma.forumPost.create({
             data: {
                 title: data.title,
@@ -174,10 +147,7 @@ export const updateForumPost = async (req: Request<any, UpdateForumPostBody>, re
             return res.status(404).json({ status: "error", message: "User not found" });
         } 
         
-        const postId = req.params.id;
-        if (!postId || typeof postId !== 'string') {
-            return res.status(400).json({ status: "error", message: "Valid post ID is required" });
-        }
+        const postId = req.params.postId;
         const post = await prisma.forumPost.findUnique({ where: { id: postId } });
         if (!post) {
             return res.status(404).json({ status: "error", message: "Post not found" });
@@ -186,9 +156,6 @@ export const updateForumPost = async (req: Request<any, UpdateForumPostBody>, re
             return res.status(403).json({ status: "error", message: "Unauthorized" });
         } 
         const data: UpdateForumPostBody = req.body;
-        if (!data.title || !data.content) {
-            return res.status(400).json({ status: "error", message: "All fields are required" });
-        }
         const newPost = await prisma.forumPost.update({ 
             where: { id: postId }, 
             data: { title: data.title, content: data.content } 
@@ -207,10 +174,7 @@ export const deleteForumPost = async (req: Request, res: Response) => {
         if (!user) {
             return res.status(404).json({ status: "error", message: "User not found" });
         } 
-        const postId = req.params.id;
-        if (!postId || typeof postId !== 'string') {
-            return res.status(400).json({ status: "error", message: "Valid post ID is required" });
-        }
+        const postId = req.params.postId;
         await prisma.forumPost.delete({ where: { id: postId } });
         return res.status(200).json({ status: "success" }); 
     } catch (error: any) {

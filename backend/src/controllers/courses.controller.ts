@@ -7,18 +7,7 @@ import prisma from "../database/prisma";
 export async function getCourses(req: Request, res: Response) {
   try {
     // Lecture et validation des paramètres de requête
-    const pathId =
-      typeof req.query.pathId === "string" ? req.query.pathId : undefined;
-    const category =
-      typeof req.query.category === "string" ? req.query.category : undefined;
-    const level =
-      typeof req.query.level === "string" ? req.query.level : undefined;
-    const published =
-      typeof req.query.published === "string"
-        ? req.query.published
-        : undefined;
-    const q =
-      typeof req.query.q === "string" ? req.query.q.trim() : undefined;
+    const { pathId, category, level, published, q } = req.query as any;
 
     // Construction dynamique de la clause WHERE pour Prisma
     const where: any = {};
@@ -31,9 +20,10 @@ export async function getCourses(req: Request, res: Response) {
 
     // Recherche textuelle sur le titre et la description
     if (q) {
+      const search = q.trim();
       where.OR = [
-        { title: { contains: q, mode: "insensitive" } },
-        { description: { contains: q, mode: "insensitive" } },
+        { title: { contains: search, mode: "insensitive" } },
+        { description: { contains: search, mode: "insensitive" } },
       ];
     }
 
@@ -82,28 +72,6 @@ export async function createCourse(req: Request, res: Response) {
       learningPathId,
     } = req.body;
 
-    // Validation des champs obligatoires
-    if (!title || typeof title !== "string") {
-      return res.status(400).json({
-        success: false,
-        message: "titre requis",
-      });
-    }
-
-    if (!description || typeof description !== "string") {
-      return res.status(400).json({
-        success: false,
-        message: "description requise",
-      });
-    }
-
-    if (!learningPathId || typeof learningPathId !== "string") {
-      return res.status(400).json({
-        success: false,
-        message: "learningPathId est requis",
-      });
-    }
-
     // Vérification de l’existence du learning path associé
     const path = await prisma.learningPath.findUnique({
       where: { id: learningPathId },
@@ -123,8 +91,7 @@ export async function createCourse(req: Request, res: Response) {
         description,
         category: category ?? null,
         level: level ?? "BEGINNER",
-        isPublished:
-          typeof isPublished === "boolean" ? isPublished : false,
+        isPublished: isPublished ?? false,
         learningPathId,
       },
     });

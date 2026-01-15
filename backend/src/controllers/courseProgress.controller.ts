@@ -8,12 +8,6 @@ export async function getCourseProgress(req: Request, res: Response) {
 
     // Lecture des paramètres (courseId) et identification de l’utilisateur (JWT)
     const courseId = req.params.id as string;
-    const userId = (req as any).user?.id as string | undefined;
-
-    // Validation d’accès : l’utilisateur doit être authentifié
-    if (!userId) {
-      return res.status(401).json({ success: false, message: "Pas autorisé" });
-    }
     const userId = (req as any).user?.userId as string; // From authMiddleware
 
     // Calcul du nombre total de leçons dans le cours (module => courseId)

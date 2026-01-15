@@ -10,8 +10,7 @@ export async function getModules(req: Request, res: Response) {
   try {
 
     // Lecture et validation du paramètre de requête courseId
-    const courseId =
-      typeof req.query.courseId === "string" ? req.query.courseId : undefined;
+    const { courseId } = req.query as any;
 
     // Construction dynamique de la clause WHERE pour Prisma
     const where: any = {};
@@ -95,42 +94,8 @@ export async function getModuleById(req: Request, res: Response) {
 // Crée un nouveau module associé à un cours (admin)
 export async function createModule(req: Request, res: Response) {
   try {
-
-    // Vérification du rôle administrateur
-    const role = (req as any).user?.role;
-    if (role !== "ADMIN") {
-      return res.status(403).json({
-        success: false,
-        message: "Admin seulement",
-      });
-    }
-
     // Extraction des données envoyées dans le body
     const { title, position, courseId } = req.body;
-
-    // Validation du titre
-    if (!title || typeof title !== "string") {
-      return res.status(400).json({
-        success: false,
-        message: "title requis",
-      });
-    }
-
-    // Validation de la position
-    if (typeof position !== "number" || !Number.isInteger(position)) {
-      return res.status(400).json({
-        success: false,
-        message: "position doit être un entier",
-      });
-    }
-
-    // Validation de l'identifiant du cours
-    if (!courseId || typeof courseId !== "string") {
-      return res.status(400).json({
-        success: false,
-        message: "courseId est requis",
-      });
-    }
 
     // Vérification de l'existence du cours associé
     const course = await prisma.course.findUnique({ where: { id: courseId } });
@@ -168,16 +133,6 @@ export async function createModule(req: Request, res: Response) {
 // Met à jour partiellement les informations d’un module existant
 export async function updateModule(req: Request, res: Response) {
   try {
-
-    // Vérification du rôle administrateur
-    const role = (req as any).user?.role;
-    if (role !== "ADMIN") {
-      return res.status(403).json({
-        success: false,
-        message: "Admin seulement",
-      });
-    }
-
     // Récupération de l'identifiant du module
     const id = req.params.id as string;
 
@@ -195,12 +150,6 @@ export async function updateModule(req: Request, res: Response) {
 
     // Validation du courseId s'il est fourni
     if (courseId !== undefined) {
-      if (typeof courseId !== "string") {
-        return res.status(400).json({
-          success: false,
-          message: "courseId invalide",
-        });
-      }
       const course = await prisma.course.findUnique({ where: { id: courseId } });
       if (!course) {
         return res.status(404).json({
@@ -208,24 +157,6 @@ export async function updateModule(req: Request, res: Response) {
           message: "Course non trouvé",
         });
       }
-    }
-
-    // Validation de la position si fournie
-    if (position !== undefined) {
-      if (typeof position !== "number" || !Number.isInteger(position)) {
-        return res.status(400).json({
-          success: false,
-          message: "position doit être un entier",
-        });
-      }
-    }
-
-    // Validation du titre si fourni
-    if (title !== undefined && typeof title !== "string") {
-      return res.status(400).json({
-        success: false,
-        message: "title invalide",
-      });
     }
 
     // Mise à jour du module dans la base de données
@@ -260,15 +191,6 @@ export async function updateModule(req: Request, res: Response) {
 // Supprime définitivement un module à partir de son identifiant
 export async function deleteModule(req: Request, res: Response) {
   try {
-    // Vérification du rôle administrateur
-    const role = (req as any).user?.role;
-    if (role !== "ADMIN") {
-      return res.status(403).json({
-        success: false,
-        message: "Admin seulement",
-      });
-    }
-
     // Récupération de l'identifiant du module
     const id = req.params.id as string;
 
