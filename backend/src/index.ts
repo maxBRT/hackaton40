@@ -8,26 +8,33 @@ import EnrollRoutes from "./routes/enroll.routes";
 import QuizRoutes from "./routes/quiz.routes";
 import forumThreadsRoutes from "./routes/forum.routes";
 import CoursesRoutes from "./routes/courses.routes";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
-
 app.use(express.json());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}))
+// Auth
+app.use("/api/auth", UserRoutes);
 
 // Auth
-app.use("api/auth", UserRoutes);
+app.use("/auth", UserRoutes);
 
 // API
 app.use("/api/courses", CoursesRoutes);
 app.use("/api/modules", ModulesRoutes);
 app.use("/api/lessons", LessonsRoutes);
-app.use("api/enroll", EnrollRoutes);
-app.use("api/quiz", QuizRoutes);
-app.use("api/forum-treads", authMiddleware, forumThreadsRoutes);
-app.use("api/courses", CoursesRoutes);
+app.use("/api/enroll", EnrollRoutes);
+app.use("/api/quiz", QuizRoutes);
+app.use("/api/forum-treads", authMiddleware, forumThreadsRoutes);
+app.use("/api/courses", CoursesRoutes);
 
-app.get('/', authMiddleware, (req, res) => {
+app.get('/api/', authMiddleware, (req, res) => {
     console.log(req.user);
     res.send('Hello World');
 })
