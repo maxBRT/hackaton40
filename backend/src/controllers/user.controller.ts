@@ -77,7 +77,6 @@ export const login = async (req: Request<any, LoginBody>, res: Response) => {
             success: true,
             message: "User logged in successfully",
             data: {
-                user: user,
                 token: token
             }
         });
@@ -93,16 +92,32 @@ export const login = async (req: Request<any, LoginBody>, res: Response) => {
 export const userInfo = async (req: Request, res: Response) => {
         try {
             const userPayload = req.user as { userId: string, userEmail: string };
-            const user = await prisma.user.findUnique({where: {id: userPayload.userId}});
-
+            const user = await prisma.user.findUnique({
+                where: {id: userPayload.userId}, 
+                include: { 
+                    courseUsers: true,  
+                    lessonProgresses: true,
+                }
+            });
             if (!user) {
+                console.log("User not found");
                 return res.status(404).json({message: "User not found"});
+            }
+            
+            const data = {
+                userId: user.id,
+                username: user.username,
+                userEmail: user.email,
+                role: user.role,
+                currentExp: user.currentExp,
+                userCourses: user.courseUsers,
+                lessonProgresses: user.lessonProgresses
             }
 
             res.status(200).json({
                 success: true,
                 message: "User info fetched successfully",
-                data: user
+                data 
             });
         }catch (error: any) {
             console.error(error);
