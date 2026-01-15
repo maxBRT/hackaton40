@@ -1,7 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-
+import { swaggerRouter } from "./docs/swagger";
+import "./schemas/course.schema";
 import { authMiddleware } from "./middleware/authMiddleware";
 
 import UserRoutes from "./routes/user.routes";
@@ -37,6 +38,7 @@ app.use("/api/modules", ModulesRoutes);
 app.use("/api/lessons", LessonsRoutes);
 app.use("/api/enroll", EnrollRoutes);
 app.use("/api/quiz", QuizRoutes);
+app.use("/api", swaggerRouter);
 
 // Forum + Progress (protected where needed)
 app.use("/api/forum-threads", authMiddleware, forumRoutes);

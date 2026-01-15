@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { getCourses, createCourse } from "../controllers/courses.controller";
 import { authMiddleware } from "../middleware/authMiddleware";
+import { validate } from "../middleware/validate";
+import { CreateCourseSchema } from "../schemas/course.schema";
 
 const router = Router();
 
 // GET /courses
 router.get("/", getCourses);
 // POST /courses (Admin)
-router.post("/", authMiddleware, createCourse);
+router.post("/", authMiddleware,validate(CreateCourseSchema), createCourse);
 
 export default router;
