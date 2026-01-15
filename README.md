@@ -1,9 +1,9 @@
-`make dev` lancer back et front
+`make dev` Lancer back et front
 
-`make install` install back et front
+`make install` Install back et front
 
-`make start-backend` start back
+`make start-backend` Start back
 
-`make start-frontend` start front
+`make start-frontend` Start front
 
 `cd backend && npm run seed` Seed the database
