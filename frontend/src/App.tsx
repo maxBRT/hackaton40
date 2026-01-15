@@ -1,3 +1,5 @@
+import Dashboard from "./pages/Dashboard";
+
 export default function App() {
    
   return (
@@ -5,4 +7,8 @@ export default function App() {
       <h1>Frontend LearnHub</h1>
     </div>
   );
+}
+
+
+  
 }
