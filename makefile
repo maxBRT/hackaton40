@@ -1,4 +1,4 @@
-.PHONY: install dev start-backend start-frontend
+.PHONY: install dev start-backend start-frontend 
 
 install:
 	cd backend && npm install
