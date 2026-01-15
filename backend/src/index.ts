@@ -8,7 +8,7 @@ import LessonsRoutes from "./routes/lessons.routes";
 import EnrollRoutes from "./routes/enroll.routes";
 import QuizRoutes from "./routes/quiz.routes";
 import forumThreadsRoutes from "./routes/forumThreads.routes";
-import CoursesRoutes from "./routes/courses.routes";
+import ProgressRoutes from "./routes/progress.routes";
 
 dotenv.config();
 
@@ -22,6 +22,7 @@ app.use("/auth", UserRoutes);
 app.use("/api/courses", CoursesRoutes);
 app.use("/api/modules", ModulesRoutes);
 app.use("/api/lessons", LessonsRoutes);
+app.use("/api", ProgressRoutes);
 
 app.use("/enroll", EnrollRoutes);
 app.use("/quiz", QuizRoutes);

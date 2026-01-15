@@ -199,3 +199,8 @@ Authorization: Bearer {{token}}
 ### Delete a forum thread
 DELETE {{baseUrl}}/forum-treads/PASTE_THREAD_ID_HERE
 Authorization: Bearer {{token}}
+
+
+### Progression
+GET http://localhost:3000/api/courses/COURSE_ID/progress
+Authorization: Bearer 
