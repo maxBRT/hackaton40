@@ -12,12 +12,16 @@ import {Link, useNavigate} from "react-router-dom";
 import api from "@/utils/axiosRequestInterceptor.ts";
 import {FaBookAtlas} from "react-icons/fa6";
 import {handleApiError} from "@/utils/handleApiError.ts";
+import type {User} from "@/types/User.ts";
 
 
 interface RegisterResponse {
-  data?: Record<string, unknown>;
-  message?: string;
-  success?: boolean;
+  message: string;
+  success: boolean;
+  data: {
+    user: User;
+    token: string;
+  };
 }
 
 interface RegisterRequest {

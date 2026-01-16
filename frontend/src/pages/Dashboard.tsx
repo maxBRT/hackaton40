@@ -28,7 +28,7 @@ export default function Dashboard() {
         const response = await api.get<MeResponse>("/auth/me")
 
         setMe(response.data)
-      } catch (err: any) {
+      } catch (err) {
         handleApiError(err, setError)
       } 
     }
@@ -143,10 +143,6 @@ export default function Dashboard() {
             <div>
               <span className="text-muted-foreground">Email :</span>{" "}
               <span className="font-medium">{user?.userEmail ?? "..."}</span>
-            </div>
-            <div>
-              <span className="text-muted-foreground">User ID :</span>{" "}
-              <span className="font-mono text-xs">{user?.userId ?? "..."}</span>
             </div>
 
             <div className="pt-2">

@@ -3,7 +3,6 @@ import {Input} from "@/components/ui/input.tsx";
 import {NativeSelect, NativeSelectOption} from "@/components/ui/native-select.tsx";
 import type {Course} from "@/types/Course";
 import React, {useState} from "react";
-import {FaX} from "react-icons/fa6";
 import {Button} from "@/components/ui/button.tsx";
 import type {ForumThread, NewForumThreadRequest, NewForumThreadResponse} from "@/types/Forum";
 import api from "@/utils/axiosRequestInterceptor.ts";
@@ -41,11 +40,6 @@ const NewForumThreadForm: React.FC<NewForumThreadFormProps> = ({courses, onThrea
     
    return (
   <div className="relative w-full max-w-4xl mx-auto p-6 rounded-xl my-3 border border-gray-200 bg-white shadow-sm">
-    <div className="absolute top-3 right-3">
-      <Button className="rounded-full">
-        <FaX className="w-3 h-3 rounded-full text-gray-500" />
-      </Button>
-    </div>
 
     <form className="mt-2 space-y-6" onSubmit={handleSubmit}>
       

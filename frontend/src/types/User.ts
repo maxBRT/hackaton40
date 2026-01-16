@@ -1,5 +1,15 @@
 import type { Course } from "./Course";
 
+export type User = {
+  id: string;
+  username: string;
+  email: string;
+  role: string;
+  currentExp: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export type MePayload = {
   userId: string;
   username: string;
