@@ -6,9 +6,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import LearningPaths from "./pages/LearningPaths";
-import Course from "./pages/Course";
+import Course from "./pages/Course.tsx";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ForumThreads from "./pages/ForumThreads.tsx";
+import ForumPost from "@/pages/ForumThreadDetails.tsx";
+import PathDetails from "./pages/PathDetails.tsx";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +51,23 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "forum/:id",
+        element: (
+          <ProtectedRoute>
+            <ForumPost />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "learning-path/:id",
+        element: (
+          <ProtectedRoute>
+            <PathDetails/>
+          </ProtectedRoute>
+        ),
+      }  
+      
     ],
   },
 ]);

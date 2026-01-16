@@ -39,7 +39,7 @@ const NewForumThreadForm: React.FC<NewForumThreadFormProps> = ({courses, onThrea
     }
     
    return (
-  <div className="relative w-full max-w-4xl mx-auto p-6 rounded-xl my-3 border border-gray-200 bg-white shadow-sm">
+  <div className="relative w-full max-w-4xl mx-auto p-6 rounded-xl my-3 border shadow-sm">
 
     <form className="mt-2 space-y-6" onSubmit={handleSubmit}>
       
@@ -47,28 +47,28 @@ const NewForumThreadForm: React.FC<NewForumThreadFormProps> = ({courses, onThrea
         
         <div className="md:col-span-2">
           <FieldGroup className="flex flex-col gap-1">
-            <FieldLabel className="text-sm font-medium text-gray-700">Titre</FieldLabel>
+            <FieldLabel className="text-sm font-medium">Titre</FieldLabel>
             <Input 
               type="text" 
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Titre de la question" 
-              className="w-full p-2 border border-gray-300 rounded-md"
+              className="w-full p-2 border rounded-md"
             />
           </FieldGroup>
         </div>
 
         <div className="md:col-span-1">
           <FieldGroup className="flex flex-col gap-1">
-            <FieldLabel className="text-sm font-medium text-gray-700">Cours</FieldLabel>
+            <FieldLabel className="text-sm font-medium">Cours</FieldLabel>
             <NativeSelect 
-                className="w-full p-2 border border-gray-300 rounded-md bg-transparent"
+                className="w-full p-2 border rounded-md bg-transparent"
                 value={courseId}
                 onChange={(e) => setCourseId(e.target.value)}
             >
                 <NativeSelectOption value="">Choisir un cours</NativeSelectOption>
               {courses.map((c: Course) => (
-                <NativeSelectOption key={c.id} value={c.id}>
+                <NativeSelectOption className="text-gray-600" key={c.id} value={c.id}>
                   {c.title}
                 </NativeSelectOption>
               ))}
@@ -78,10 +78,10 @@ const NewForumThreadForm: React.FC<NewForumThreadFormProps> = ({courses, onThrea
       </div>
 
       <FieldGroup className="flex flex-col gap-1">
-        <FieldLabel className="text-sm font-medium text-gray-700">Contenu</FieldLabel>
+        <FieldLabel className="text-sm font-medium">Contenu</FieldLabel>
         <textarea
           placeholder="Contenu de la question" 
-          className="w-full h-32 p-2 border border-gray-300 rounded-md resize-none align-top"
+          className="w-full h-32 p-2 border rounded-md resize-none align-top"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
