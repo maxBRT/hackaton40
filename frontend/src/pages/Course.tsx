@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "@/utils/axiosRequestInterceptor.ts";
+import {handleApiError} from "@/utils/handleApiError.ts";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 interface Course {
@@ -28,6 +29,7 @@ export default function PathDetails() {
 
   const [path, setPath] = useState<LearningPath | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -39,13 +41,12 @@ export default function PathDetails() {
         return;
       }
 
+      setError(null);
       try {
-        const res = await axios.get<ApiResponse>(`/api/learning-paths/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await api.get<ApiResponse>(`/learning-paths/${id}`);
         setPath(res.data.data);
-      } catch (e: any) {
-        console.error("API ERROR data:", e?.response?.data);
+      } catch (e) {
+        handleApiError(e, setError);
         setPath(null);
       } finally {
         setLoading(false);
@@ -53,7 +54,7 @@ export default function PathDetails() {
     };
 
     load();
-  }, [id]);
+  }, [id, navigate]);
 
   if (loading) return <div className="p-6">Chargement...</div>;
 
@@ -75,6 +76,12 @@ export default function PathDetails() {
       <p className="text-muted-foreground mt-2">
         {path.description ?? "Aucune description"}
       </p>
+
+      {error && (
+          <div className="mb-6 rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
+            {error}
+          </div>
+      )}
 
       <h2 className="text-xl font-semibold mt-6">Cours</h2>
 

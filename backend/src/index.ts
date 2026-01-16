@@ -40,12 +40,12 @@ app.use(
 app.use("/api/auth", UserRoutes);
 
 // API
-app.use("/api/courses", CoursesRoutes);
-app.use("/api/learning-paths", LearningPathsRoutes);
-app.use("/api/modules", ModulesRoutes);
-app.use("/api/lessons", LessonsRoutes);
-app.use("/api/enroll", EnrollRoutes);
-app.use("/api/quiz", QuizRoutes);
+app.use("/api/courses", authMiddleware, CoursesRoutes);
+app.use("/api/learning-paths", authMiddleware, LearningPathsRoutes);
+app.use("/api/modules", authMiddleware, ModulesRoutes);
+app.use("/api/lessons", authMiddleware, LessonsRoutes);
+app.use("/api/enroll", authMiddleware, EnrollRoutes);
+app.use("/api/quiz", authMiddleware, QuizRoutes);
 app.use("/api/forum-threads", authMiddleware, forumRoutes);
 app.use("/api/progress", authMiddleware, ProgressRoutes);
 app.use("/api", swaggerRouter);

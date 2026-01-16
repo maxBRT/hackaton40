@@ -26,6 +26,7 @@ registry.registerPath({
   path: "/api/lessons",
   tags: ["Lessons"],
   summary: "Get all lessons",
+  security: [{ bearerAuth: [] }],
   operationId: "getLessons",
   request: {
     query: GetLessonsQuerySchema,
@@ -51,6 +52,7 @@ registry.registerPath({
   path: "/api/lessons/{id}",
   tags: ["Lessons"],
   summary: "Get lesson by ID",
+  security: [{ bearerAuth: [] }],
   operationId: "getLessonById",
   request: {
     params: z.object({
@@ -78,6 +80,7 @@ registry.registerPath({
   path: "/api/lessons",
   tags: ["Lessons"],
   summary: "Create a new lesson",
+  security: [{ bearerAuth: [] }],
   operationId: "createLesson",
   request: {
     body: {
@@ -107,6 +110,7 @@ registry.registerPath({
   path: "/api/lessons/{id}/complete",
   tags: ["Lessons"],
   summary: "Mark a lesson as completed",
+  security: [{ bearerAuth: [] }],
   operationId: "completeLesson",
   request: {
     params: z.object({

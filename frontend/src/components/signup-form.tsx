@@ -9,13 +9,13 @@ import {
 import { Input } from "@/components/ui/input"
 import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import axios from "axios";
+import api from "@/utils/axiosRequestInterceptor.ts";
 import {FaBookAtlas} from "react-icons/fa6";
 import {handleApiError} from "@/utils/handleApiError.ts";
 
 
 interface RegisterResponse {
-  data?: Record<string, any>;
+  data?: Record<string, unknown>;
   message?: string;
   success?: boolean;
 }
@@ -48,7 +48,7 @@ export function SignupForm({
     }
     try {
       const request: RegisterRequest = {username, email, password};
-      const response = await axios.post<RegisterResponse | null>("api/auth/register", request);
+      const response = await api.post<RegisterResponse | null>("/auth/register", request);
       const responseData = response.data;
       if (responseData?.data?.token) {
         localStorage.setItem("token", responseData.data.token);

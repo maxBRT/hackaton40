@@ -89,8 +89,16 @@ export const userInfo = async (req: Request, res: Response) => {
             const user = await prisma.user.findUnique({
                 where: {id: userPayload.userId}, 
                 include: { 
-                    courseUsers: true,  
-                    lessonProgresses: true,
+                    courseUsers: {
+                        include: {
+                            course: true
+                        }
+                    },  
+                    lessonProgresses: {
+                        include: {
+                            lesson: true
+                        }
+                    },
                 }
             });
             if (!user) {

@@ -25,6 +25,7 @@ registry.registerPath({
   path: "/api/courses",
   tags: ["Courses"],
   summary: "Create a new course",
+  security: [{ bearerAuth: [] }],
   operationId: "createCourse",
   request: {
     body: {
@@ -65,6 +66,7 @@ registry.registerPath({
   path: "/api/courses",
   tags: ["Courses"],
   summary: "Get all courses",
+  security: [{ bearerAuth: [] }],
   operationId: "getCourses",
   request: {
     query: GetCoursesQuerySchema,
@@ -90,6 +92,7 @@ registry.registerPath({
   path: "/api/courses/{id}",
   tags: ["Courses"],
   summary: "Get course by ID",
+  security: [{ bearerAuth: [] }],
   operationId: "getCourseById",
   request: {
     params: z.object({

@@ -20,6 +20,7 @@ registry.registerPath({
   path: "/api/modules",
   tags: ["Modules"],
   summary: "Get all modules",
+  security: [{ bearerAuth: [] }],
   operationId: "getModules",
   request: {
     query: GetModulesQuerySchema,
@@ -44,6 +45,7 @@ registry.registerPath({
   path: "/api/modules/{id}",
   tags: ["Modules"],
   summary: "Get module by ID",
+  security: [{ bearerAuth: [] }],
   operationId: "getModuleById",
   request: {
     params: z.object({
@@ -71,6 +73,7 @@ registry.registerPath({
   path: "/api/modules",
   tags: ["Modules"],
   summary: "Create a new module",
+  security: [{ bearerAuth: [] }],
   operationId: "createModule",
   request: {
     body: {
@@ -104,6 +107,7 @@ registry.registerPath({
   path: "/api/modules/{id}",
   tags: ["Modules"],
   summary: "Update a module",
+  security: [{ bearerAuth: [] }],
   operationId: "updateModule",
   request: {
     params: z.object({
@@ -140,6 +144,7 @@ registry.registerPath({
   path: "/api/modules/{id}",
   tags: ["Modules"],
   summary: "Delete a module",
+  security: [{ bearerAuth: [] }],
   operationId: "deleteModule",
   request: {
     params: z.object({

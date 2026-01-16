@@ -107,8 +107,21 @@ registry.registerPath({
               userEmail: z.string(),
               role: z.string(),
               currentExp: z.number(),
-              userCourses: z.array(z.any()),
-              lessonProgresses: z.array(z.any()),
+              userCourses: z.array(z.object({
+                courseId: z.string(),
+                userId: z.string(),
+                completed: z.boolean(),
+                course: z.any() // CourseSchema would be better if we could import it without circular dep
+              })),
+              lessonProgresses: z.array(z.object({
+                userId: z.string(),
+                lessonId: z.string(),
+                isCompleted: z.boolean(),
+                lesson: z.object({
+                  id: z.string(),
+                  title: z.string()
+                })
+              })),
             }),
           }),
         },

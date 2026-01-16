@@ -1,38 +1,22 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import axios from "axios"
 
+import {handleApiError} from "@/utils/handleApiError.ts";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-
-type MePayload = {
-  userId: string
-  username: string
-  userEmail: string
-  role: string
-  currentExp: number
-  userCourses: any[]
-  lessonProgresses: any[]
-}
-
-type MeResponse = {
-  success: boolean
-  message: string
-  data: MePayload
-}
+import api from "@/utils/axiosRequestInterceptor.ts";
+import type { MePayload, MeResponse } from "@/types/User";
 
 export default function Dashboard() {
   const navigate = useNavigate()
 
   const [error, setError] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
   const [me, setMe] = useState<MeResponse | null>(null)
 
   useEffect(() => {
     const fetchMe = async () => {
       setError(null)
-      setLoading(true)
 
       try {
         const token = localStorage.getItem("token")
@@ -41,22 +25,29 @@ export default function Dashboard() {
           return
         }
 
-        const response = await axios.get<MeResponse>("/api/auth/me", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const response = await api.get<MeResponse>("/auth/me")
 
         setMe(response.data)
       } catch (err: any) {
-        console.error(err?.message ?? err)
-        setError(err?.message ?? "Erreur lors du chargement des données.")
-      } finally {
-        setLoading(false)
-      }
+        handleApiError(err, setError)
+      } 
     }
 
     fetchMe()
   }, [navigate])
 
+  const renderLessonItem = (lp: MePayload["lessonProgresses"][0], idx: number) => {
+    const title = lp?.lesson?.title ?? `Leçon #${idx + 1}`
+    const status = lp?.isCompleted ? "COMPLETED" : "IN_PROGRESS"
+    return (
+        <li key={lp.lessonId || idx}>
+          {title}{" "}
+          <span className="text-muted-foreground">
+              ({status})
+            </span>
+        </li>
+    )
+  }
   const logout = () => {
     localStorage.removeItem("token")
     navigate("/login")
@@ -67,7 +58,7 @@ export default function Dashboard() {
   const lessonsCount = user?.lessonProgresses?.length ?? 0
 
   const completedLessons = user?.lessonProgresses?.filter(
-    (lp) => lp?.isCompleted === true || lp?.completed === true || lp?.status === "COMPLETED"
+    (lp) => lp?.isCompleted
   ).length ?? 0
 
   const completionPct =
@@ -79,9 +70,6 @@ export default function Dashboard() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold">Dashboard</h1>
-          <p className="mt-1 text-muted-foreground">
-            {loading ? "Chargement..." : "Connecté ✅"}
-          </p>
         </div>
 
         <Button variant="destructive" onClick={logout}>
@@ -209,9 +197,9 @@ export default function Dashboard() {
               <p className="text-muted-foreground">Aucun cours pour l’instant.</p>
             ) : (
               <ul className="list-disc pl-5">
-                {user!.userCourses.slice(0, 5).map((c, idx) => (
-                  <li key={c?.id ?? idx}>
-                    {c?.title ?? c?.name ?? `Cours #${idx + 1}`}
+                {user!.userCourses.slice(0, 5).map((uc, idx) => (
+                  <li key={uc?.courseId ?? idx}>
+                    {uc?.course?.title ?? `Cours #${idx + 1}`}
                   </li>
                 ))}
               </ul>
@@ -224,21 +212,14 @@ export default function Dashboard() {
             <CardTitle>Dernières leçons</CardTitle>
           </CardHeader>
           <CardContent className="text-sm">
-            {lessonsCount === 0 ? (
-              <p className="text-muted-foreground">Aucune leçon suivie.</p>
-            ) : (
-              <ul className="list-disc pl-5">
-                {user!.lessonProgresses.slice(0, 5).map((lp, idx) => (
-                  <li key={lp?.id ?? idx}>
-                    {lp?.lessonTitle ?? lp?.title ?? `Leçon #${idx + 1}`}{" "}
-                    <span className="text-muted-foreground">
-                      ({lp?.status ?? (lp?.isCompleted ? "COMPLETED" : "IN_PROGRESS")})
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </CardContent>
+                {lessonsCount === 0 ? (
+                  <p className="text-muted-foreground">Aucune leçon suivie.</p>
+                ) : (
+                  <ul className="list-disc pl-5">
+                    {user!.lessonProgresses.slice(0, 5).map(renderLessonItem)}
+                  </ul>
+                )}
+              </CardContent>
         </Card>
       </div>
     </div>

@@ -9,7 +9,7 @@ import {
 import { Input } from "@/components/ui/input"
 import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import axios from "axios";
+import api from "@/utils/axiosRequestInterceptor.ts";
 import { FaBookAtlas } from "react-icons/fa6";
 import {handleApiError} from "@/utils/handleApiError.ts";
 
@@ -40,7 +40,7 @@ export function LoginForm({
     setError(null);
     try {
       const request: LoginRequest = { email, password };
-      const response = await axios.post<LoginResponse>("/api/auth/login", request);
+      const response = await api.post<LoginResponse>("/auth/login", request);
       const responseData = response.data;
       if (!responseData.success) {
         setError(responseData.message ?? null);

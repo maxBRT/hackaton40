@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 // Imports des composants UI shadcn pour l’affichage des cartes
 // -------------------------------
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import axios from "axios";
+import api from "@/utils/axiosRequestInterceptor.ts";
+import {handleApiError} from "@/utils/handleApiError.ts";
 
 
 // -------------------------------
@@ -36,6 +37,7 @@ export default function LearningPaths() {
   const navigate = useNavigate();
   const [paths, setPaths] = useState<LearningPath[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // -------------------------------
   // Effet exécuté au chargement pour vérifier l’authentification et charger les données
@@ -52,12 +54,13 @@ export default function LearningPaths() {
         return;
       }
 
+      setError(null);
       try {
 
         // -------------------------------
         // Appel API pour récupérer les parcours d’apprentissage
         // -------------------------------
-        const response = await axios.get<ApiResponse>("/api/learning-paths");
+        const response = await api.get<ApiResponse>("/learning-paths");
         const responseData = response.data
         const path = responseData.data
 
@@ -66,7 +69,7 @@ export default function LearningPaths() {
         // -------------------------------
         setPaths(path ?? []);
       } catch (e) {
-        console.error("API ERROR:", e);
+        handleApiError(e, setError);
       } finally {
         // -------------------------------
         // Fin de l’état de chargement
@@ -76,7 +79,7 @@ export default function LearningPaths() {
     };
 
     load();
-  }, []);
+  }, [navigate]);
 
   // -------------------------------
   // Affichage d’un message pendant le chargement des données
@@ -96,6 +99,12 @@ export default function LearningPaths() {
       <p className="text-muted-foreground mt-2">
         Choisis un parcours pour voir les cours disponibles.
       </p>
+
+      {error && (
+          <div className="mt-6 rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive">
+            {error}
+          </div>
+      )}
       
       {/* -------------------------------
           Affichage dynamique des parcours sous forme de cartes

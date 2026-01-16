@@ -15,6 +15,7 @@ registry.registerPath({
   path: "/api/learning-paths",
   tags: ["Learning Paths"],
   summary: "Get all learning paths",
+  security: [{ bearerAuth: [] }],
   operationId: "getLearningPaths",
   responses: {
     200: {
@@ -37,6 +38,7 @@ registry.registerPath({
   path: "/api/learning-paths/{id}",
   tags: ["Learning Paths"],
   summary: "Get learning path by ID",
+  security: [{ bearerAuth: [] }],
   operationId: "getLearningPathById",
   request: {
     params: z.object({
