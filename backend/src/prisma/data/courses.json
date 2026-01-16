@@ -75,5 +75,71 @@
     "learningPathId": "lp_mobile",
     "createdAt": "2025-10-01T14:00:00Z",
     "updatedAt": "2025-10-01T14:00:00Z"
+  },
+  {
+    "id": "course_vue",
+    "title": "Vue.js 3 : Composition API",
+    "description": "L'alternative élégante à React pour le frontend.",
+    "category": "Frontend",
+    "level": "INTERMEDIATE",
+    "isPublished": true,
+    "learningPathId": "lp_web",
+    "createdAt": "2025-10-15T10:00:00Z",
+    "updatedAt": "2025-10-15T10:00:00Z"
+  },
+  {
+    "id": "course_aws",
+    "title": "Débuter sur AWS",
+    "description": "Maîtrisez les services essentiels d'Amazon Web Services.",
+    "category": "Cloud",
+    "level": "BEGINNER",
+    "isPublished": true,
+    "learningPathId": "lp_devops",
+    "createdAt": "2025-11-05T09:00:00Z",
+    "updatedAt": "2025-11-05T09:00:00Z"
+  },
+  {
+    "id": "course_sql_advanced",
+    "title": "SQL Avancé et Optimisation",
+    "description": "Requêtes complexes, indexation et performance.",
+    "category": "Database",
+    "level": "ADVANCED",
+    "isPublished": true,
+    "learningPathId": "lp_data",
+    "createdAt": "2025-11-20T11:00:00Z",
+    "updatedAt": "2025-11-20T11:00:00Z"
+  },
+  {
+    "id": "course_nest",
+    "title": "NestJS : Architecture robuste",
+    "description": "Construisez des applications backend évolutives avec TypeScript.",
+    "category": "Backend",
+    "level": "ADVANCED",
+    "isPublished": true,
+    "learningPathId": "lp_web",
+    "createdAt": "2025-12-01T14:00:00Z",
+    "updatedAt": "2025-12-01T14:00:00Z"
+  },
+  {
+    "id": "course_ui_ux",
+    "title": "UI/UX pour les Développeurs",
+    "description": "Apprenez les principes du design pour sublimer vos apps.",
+    "category": "Design",
+    "level": "BEGINNER",
+    "isPublished": true,
+    "learningPathId": "lp_web",
+    "createdAt": "2025-12-10T10:00:00Z",
+    "updatedAt": "2025-12-10T10:00:00Z"
+  },
+  {
+    "id": "course_go",
+    "title": "Programmation avec Go",
+    "description": "Efficacité et performance pour le cloud native.",
+    "category": "Backend",
+    "level": "INTERMEDIATE",
+    "isPublished": true,
+    "learningPathId": "lp_web",
+    "createdAt": "2025-12-15T15:00:00Z",
+    "updatedAt": "2025-12-15T15:00:00Z"
   }
 ]

@@ -52,5 +52,77 @@
     "courseId": "course_flutter",
     "createdAt": "2026-01-02T14:00:00Z",
     "updatedAt": "2026-01-02T14:00:00Z"
+  },
+  {
+    "id": "thread_typescript_tips",
+    "title": "Astuces TypeScript avancées",
+    "content": "Quelles sont vos astuces préférées pour rendre vos types plus robustes ?",
+    "userId": "user_9",
+    "courseId": "course_react",
+    "createdAt": "2026-01-05T10:00:00Z",
+    "updatedAt": "2026-01-05T10:00:00Z"
+  },
+  {
+    "id": "thread_backend_security",
+    "title": "Sécuriser une API Node.js",
+    "content": "Au-delà de JWT, que recommandez-vous pour une sécurité maximale ?",
+    "userId": "user_14",
+    "courseId": "course_node",
+    "createdAt": "2026-01-06T11:30:00Z",
+    "updatedAt": "2026-01-06T11:30:00Z"
+  },
+  {
+    "id": "thread_ai_dev",
+    "title": "L'IA dans le quotidien du dev",
+    "content": "Utilisez-vous Copilot ou Cursor ? Quel impact sur votre productivité ?",
+    "userId": "user_8",
+    "courseId": "course_python",
+    "createdAt": "2026-01-07T09:00:00Z",
+    "updatedAt": "2026-01-07T09:00:00Z"
+  },
+  {
+    "id": "thread_frontend_perf",
+    "title": "Optimisation des performances React",
+    "content": "Mes composants re-render trop souvent. Comment bien utiliser useMemo ?",
+    "userId": "user_15",
+    "courseId": "course_react",
+    "createdAt": "2026-01-08T14:20:00Z",
+    "updatedAt": "2026-01-08T14:20:00Z"
+  },
+  {
+    "id": "thread_career_junior",
+    "title": "Premier job en tant que Junior",
+    "content": "Quels conseils pour un premier entretien technique ?",
+    "userId": "user_10",
+    "courseId": "course_react",
+    "createdAt": "2026-01-09T16:00:00Z",
+    "updatedAt": "2026-01-09T16:00:00Z"
+  },
+  {
+    "id": "thread_rust_vs_go",
+    "title": "Rust vs Go pour le backend",
+    "content": "Lequel choisir pour un microservice haute performance ?",
+    "userId": "user_12",
+    "courseId": "course_node",
+    "createdAt": "2026-01-10T10:45:00Z",
+    "updatedAt": "2026-01-10T10:45:00Z"
+  },
+  {
+    "id": "thread_db_nosql_sql",
+    "title": "SQL ou NoSQL en 2026 ?",
+    "content": "Est-ce que Postgres suffit pour tout aujourd'hui ?",
+    "userId": "user_13",
+    "courseId": "course_node",
+    "createdAt": "2026-01-11T13:10:00Z",
+    "updatedAt": "2026-01-11T13:10:00Z"
+  },
+  {
+    "id": "thread_clean_code",
+    "title": "Ressources sur le Clean Code",
+    "content": "Avez-vous des livres ou blogs à recommander sur l'architecture logicielle ?",
+    "userId": "user_11",
+    "courseId": "course_react",
+    "createdAt": "2026-01-12T08:50:00Z",
+    "updatedAt": "2026-01-12T08:50:00Z"
   }
 ]

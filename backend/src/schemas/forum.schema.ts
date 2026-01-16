@@ -1,8 +1,9 @@
 import { z } from "zod";
 import { registry } from "../docs/openapi.registry";
 import {CourseSchema} from "./course.schema";
+import {UserSchema} from "./auth.schema";
 
-export const ForumThreadSchema = z.object({
+export const ForumThreadSchema: any = z.object({
   id: z.string().openapi({ example: "cl01234567890abcdef" }),
   title: z.string().openapi({ example: "How to use useEffect?" }),
   content: z.string().openapi({ example: "I am struggling with useEffect cleanup functions." }),
@@ -10,10 +11,12 @@ export const ForumThreadSchema = z.object({
   courseId: z.string().openapi({ example: "cl01234567890abcdef" }),
   createdAt: z.string(),
   updatedAt: z.string(),
-  course: CourseSchema
+  course: CourseSchema.optional(),
+  user: UserSchema.optional(),
+  posts: z.array(z.lazy(() => ForumPostSchema)).optional()
 });
 
-export const ForumPostSchema = z.object({
+export const ForumPostSchema: any = z.object({
   id: z.string().openapi({ example: "cl01234567890abcdef" }),
   title: z.string().nullable().openapi({ example: "Re: How to use useEffect?" }),
   content: z.string().openapi({ example: "You should return a function from useEffect." }),
@@ -21,7 +24,11 @@ export const ForumPostSchema = z.object({
   threadId: z.string().openapi({ example: "cl01234567890abcdef" }),
   createdAt: z.string(),
   updatedAt: z.string(),
+  user: UserSchema.optional()
 });
+
+registry.registerComponent("schemas", "ForumThread", ForumThreadSchema);
+registry.registerComponent("schemas", "ForumPost", ForumPostSchema);
 
 registry.registerPath({
   method: "get",
@@ -138,7 +145,7 @@ registry.registerPath({
             success: z.boolean(),
             message: z.string(),
             data: z.object({
-              thread: ForumThreadSchema.extend({ posts: z.array(ForumPostSchema) }),
+              thread: ForumThreadSchema,
             }),
           }),
         },

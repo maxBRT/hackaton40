@@ -103,8 +103,12 @@ export const deleteForumThread = async (req: Request, res: Response) => {
 export const listForumPosts = async (req: Request, res: Response) => {
     try {
         const threadId = req.params.id as string;
-        const thread = await prisma.forumThread.findUnique({ where: { id: threadId }, include: { posts : true } });
-        return res.status(200).json({ success: true, message: "Posts fetched successfully", data: { thread: thread}})
+        const thread = await prisma.forumThread.findUnique({ where: { id: threadId }, include: { posts : {include: {user: true}} , user: true } });
+        if (!thread) {
+            return res.status(404).json({ success: false, message: "Thread not found" });
+        }
+        const { posts, ...threadWithoutPosts } = thread;
+        return res.status(200).json({ success: true, message: "Posts fetched successfully", data: { thread: threadWithoutPosts, posts }})
     } catch (error: any) {
         console.error(error);
         return res.status(500).json({ success: false, message: error.message });
