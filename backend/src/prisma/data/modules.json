@@ -16,5 +16,35 @@
     "title": "Variables et Types",
     "position": 1,
     "courseId": "course_python"
+  },
+  {
+    "id": "mod_node_1",
+    "title": "Introduction à Node.js",
+    "position": 1,
+    "courseId": "course_node"
+  },
+  {
+    "id": "mod_docker_1",
+    "title": "Concepts de base",
+    "position": 1,
+    "courseId": "course_docker"
+  },
+  {
+    "id": "mod_kubernetes_1",
+    "title": "Architecture K8s",
+    "position": 1,
+    "courseId": "course_kubernetes"
+  },
+  {
+    "id": "mod_pentest_1",
+    "title": "Reconnaissance",
+    "position": 1,
+    "courseId": "course_pentest"
+  },
+  {
+    "id": "mod_flutter_1",
+    "title": "Widgets de base",
+    "position": 1,
+    "courseId": "course_flutter"
   }
 ]

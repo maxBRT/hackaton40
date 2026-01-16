@@ -9,7 +9,7 @@ import LearningPaths from "./pages/LearningPaths";
 import LearningPathDetail from "./pages/LearningPathDetail";
 import Course from "./pages/Course";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import ForumThreads from "./pages/ForumThreads.tsx";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +18,7 @@ export const router = createBrowserRouter([
       { index: true, element: <App /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
+      { path: "forum", element: <ForumThreads />},
 
       {
         path: "dashboard",

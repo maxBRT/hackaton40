@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { registry } from "../docs/openapi.registry";
+import { IdParamSchema } from "./common.schema";
 
 export const LoginSchema = z.object({
   email: z.string().openapi({ example: "user@example.com" }),
@@ -115,5 +116,31 @@ registry.registerPath({
       },
     },
     401: { description: "Unauthorized" },
+  },
+});
+
+registry.registerPath({
+  method: "get",
+  path: "/api/auth/{id}",
+  tags: ["Auth"],
+  summary: "Get user info by id",
+  operationId: "getUserInfo",
+  request: {
+    params: IdParamSchema,
+  },
+  responses: {
+    200: {
+      description: "User info fetched successfully",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            message: z.string(),
+            data: UserSchema,
+          }),
+        },
+      },
+    },
+    404: { description: "User not found" },
   },
 });

@@ -31,5 +31,49 @@
     "learningPathId": "lp_data",
     "createdAt": "2025-08-15T11:00:00Z",
     "updatedAt": "2025-08-15T11:00:00Z"
+  },
+  {
+    "id": "course_docker",
+    "title": "Docker pour les Développeurs",
+    "description": "Conteneurisez vos applications facilement.",
+    "category": "DevOps",
+    "level": "INTERMEDIATE",
+    "isPublished": true,
+    "learningPathId": "lp_devops",
+    "createdAt": "2025-09-05T10:00:00Z",
+    "updatedAt": "2025-09-05T10:00:00Z"
+  },
+  {
+    "id": "course_kubernetes",
+    "title": "Kubernetes en production",
+    "description": "Orchestration de conteneurs à grande échelle.",
+    "category": "DevOps",
+    "level": "ADVANCED",
+    "isPublished": true,
+    "learningPathId": "lp_devops",
+    "createdAt": "2025-09-10T12:00:00Z",
+    "updatedAt": "2025-09-10T12:00:00Z"
+  },
+  {
+    "id": "course_pentest",
+    "title": "Introduction au Pentesting",
+    "description": "Apprenez les techniques des hackers éthiques.",
+    "category": "Cybersecurity",
+    "level": "INTERMEDIATE",
+    "isPublished": true,
+    "learningPathId": "lp_cyber",
+    "createdAt": "2025-09-20T09:00:00Z",
+    "updatedAt": "2025-09-20T09:00:00Z"
+  },
+  {
+    "id": "course_flutter",
+    "title": "Flutter et Dart",
+    "description": "Développez des apps multiplateformes.",
+    "category": "Mobile",
+    "level": "BEGINNER",
+    "isPublished": true,
+    "learningPathId": "lp_mobile",
+    "createdAt": "2025-10-01T14:00:00Z",
+    "updatedAt": "2025-10-01T14:00:00Z"
   }
 ]

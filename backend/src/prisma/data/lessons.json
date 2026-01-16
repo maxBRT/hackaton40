@@ -28,5 +28,55 @@
     "moduleId": "mod_python_1",
     "createdAt": "2025-08-16T10:00:00Z",
     "updatedAt": "2025-08-16T10:00:00Z"
+  },
+  {
+    "id": "lesson_node_intro",
+    "title": "Découverte de Node.js",
+    "difficulty": "INTERMEDIATE",
+    "content": "# Découverte de Node.js\n\nNode.js est un environnement d'exécution JavaScript côté serveur.",
+    "position": 1,
+    "moduleId": "mod_node_1",
+    "createdAt": "2025-08-16T10:00:00Z",
+    "updatedAt": "2025-08-16T10:00:00Z"
+  },
+  {
+    "id": "lesson_docker_intro",
+    "title": "Qu'est-ce que Docker ?",
+    "difficulty": "INTERMEDIATE",
+    "content": "# Qu'est-ce que Docker ?\n\nDocker permet d'empaqueter une application avec toutes ses dépendances dans un conteneur.",
+    "position": 1,
+    "moduleId": "mod_docker_1",
+    "createdAt": "2025-09-06T10:00:00Z",
+    "updatedAt": "2025-09-06T10:00:00Z"
+  },
+  {
+    "id": "lesson_k8s_intro",
+    "title": "Introduction à Kubernetes",
+    "difficulty": "ADVANCED",
+    "content": "# Introduction à Kubernetes\n\nKubernetes est un orchestrateur de conteneurs open-source.",
+    "position": 1,
+    "moduleId": "mod_kubernetes_1",
+    "createdAt": "2025-09-11T10:00:00Z",
+    "updatedAt": "2025-09-11T10:00:00Z"
+  },
+  {
+    "id": "lesson_pentest_recon",
+    "title": "Phase de reconnaissance",
+    "difficulty": "INTERMEDIATE",
+    "content": "# Phase de reconnaissance\n\nLa reconnaissance est la première étape d'un test de pénétration.",
+    "position": 1,
+    "moduleId": "mod_pentest_1",
+    "createdAt": "2025-09-21T10:00:00Z",
+    "updatedAt": "2025-09-21T10:00:00Z"
+  },
+  {
+    "id": "lesson_flutter_widgets",
+    "title": "Les Widgets Flutter",
+    "difficulty": "BEGINNER",
+    "content": "# Les Widgets Flutter\n\nTout dans Flutter est un widget.",
+    "position": 1,
+    "moduleId": "mod_flutter_1",
+    "createdAt": "2025-10-02T10:00:00Z",
+    "updatedAt": "2025-10-02T10:00:00Z"
   }
 ]

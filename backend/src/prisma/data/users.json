@@ -28,5 +28,55 @@
     "currentExp": 1200,
     "createdAt": "2025-09-15T08:30:00Z",
     "updatedAt": "2025-09-15T08:30:00Z"
+  },
+  {
+    "id": "user_3",
+    "username": "alice_smith",
+    "email": "alice@example.com",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpassword789",
+    "currentExp": 500,
+    "createdAt": "2025-11-01T12:00:00Z",
+    "updatedAt": "2025-11-01T12:00:00Z"
+  },
+  {
+    "id": "user_4",
+    "username": "bob_jones",
+    "email": "bob@example.com",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordabc",
+    "currentExp": 300,
+    "createdAt": "2025-11-05T09:00:00Z",
+    "updatedAt": "2025-11-05T09:00:00Z"
+  },
+  {
+    "id": "user_5",
+    "username": "charlie_brown",
+    "email": "charlie@example.com",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpassworddef",
+    "currentExp": 100,
+    "createdAt": "2025-11-10T15:00:00Z",
+    "updatedAt": "2025-11-10T15:00:00Z"
+  },
+  {
+    "id": "user_6",
+    "username": "david_wilson",
+    "email": "david@example.com",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordghi",
+    "currentExp": 750,
+    "createdAt": "2025-11-15T11:30:00Z",
+    "updatedAt": "2025-11-15T11:30:00Z"
+  },
+  {
+    "id": "user_7",
+    "username": "eve_online",
+    "email": "eve@example.com",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordjkl",
+    "currentExp": 900,
+    "createdAt": "2025-11-20T14:45:00Z",
+    "updatedAt": "2025-11-20T14:45:00Z"
   }
 ]
