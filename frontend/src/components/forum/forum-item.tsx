@@ -1,15 +1,13 @@
 import type {ForumThread} from "@/types/Forum";
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Item, ItemActions, ItemContent, ItemDescription, ItemHeader, ItemTitle} from "@/components/ui/item.tsx";
-import {Avatar, AvatarFallback, AvatarImage} from "@radix-ui/react-avatar";
-import {createAvatar} from "@dicebear/core";
-import {thumbs} from "@dicebear/collection";
 import {Button} from "@/components/ui/button.tsx";
 import {useNavigate} from "react-router-dom";
 import api from "@/utils/axiosRequestInterceptor.ts";
 import {handleApiError} from "@/utils/handleApiError.ts";
 import {ArrowRightIcon} from "lucide-react";
 import {Spinner} from "@/components/ui/spinner.tsx";
+import UserAvatar from "@/components/user/user-avatar.tsx";
 
 interface ForumItemProps {
     thread: ForumThread
@@ -41,17 +39,10 @@ const ForumItem: React.FC<ForumItemProps> = ({ thread }) => {
         fetchUser();
     }, [thread.userId, error]);
     
-    const avatar = useMemo(() => {
-       return createAvatar(thumbs, { seed: thread.userId }).toDataUri() 
-    }, [thread.userId]) 
-    
     return (
         <Item variant={"outline"} className="my-2 w-full max-w-4xl hover:bg-gray-50 hover:scale-101 transition-transform duration-200">
             <ItemHeader>
-                <Avatar className="w-8 h-8">
-                    <AvatarImage src={avatar} className="rounded-full" /> 
-                    <AvatarFallback>U</AvatarFallback>
-                </Avatar>
+                <UserAvatar userId={thread.userId}/> 
                 <span>
                     {user ? user.username : <Spinner/>} 
                 </span>

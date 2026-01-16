@@ -15,6 +15,7 @@ api.interceptors.request.use(
     (error) => Promise.reject(error)
 )
 
+// Intercept response and flush token on a 401 error
 api.interceptors.response.use(
     (response) => {
         return response;
