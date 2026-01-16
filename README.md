@@ -64,6 +64,7 @@ make dev
 
 ## L'intelligence artificielle a été utilisée dans ce projet pour :
 - Déboguer le code.
+- Générer les message de commit github
 - Conseils sur les meilleures pratiques.
 - Proposer des suggestions de refactorisation.
 - Assister à la résolution de problèmes techniques.
