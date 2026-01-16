@@ -15,7 +15,7 @@ const ForumItem: React.FC<ForumItemProps> = ({ thread }) => {
     const navigate = useNavigate();
     
     return (
-        <Item variant={"outline"} className="my-2 w-full max-w-4xl hover:bg-gray-50 hover:scale-101 transition-transform duration-200">
+        <Item variant={"outline"} className="my-2 w-full max-w-4xl hover:bg-muted hover:scale-101 transition-transform duration-200">
             <ItemHeader>
                 <UserAvatar userId={thread.userId}/> 
                 <span>
