@@ -7,5 +7,37 @@
     "threadId": "thread_react_help",
     "createdAt": "2025-12-26T15:30:00Z",
     "updatedAt": "2025-12-26T15:30:00Z"
+  },
+  {
+    "id": "post_node_1",
+    "content": "Perso je préfère Fastify pour les performances, mais Express a une communauté tellement énorme.",
+    "userId": "user_clj2",
+    "threadId": "thread_node_express",
+    "createdAt": "2025-12-27T11:00:00Z",
+    "updatedAt": "2025-12-27T11:00:00Z"
+  },
+  {
+    "id": "post_python_1",
+    "content": "C'est principalement à cause de Pandas, Scikit-learn et l'écosystème Jupyter.",
+    "userId": "user_clj2",
+    "threadId": "thread_python_ds",
+    "createdAt": "2025-12-28T12:00:00Z",
+    "updatedAt": "2025-12-28T12:00:00Z"
+  },
+  {
+    "id": "post_docker_1",
+    "content": "Tu as probablement oublié de déclarer le volume dans ton docker-compose.yml.",
+    "userId": "user_clj1",
+    "threadId": "thread_docker_volumes",
+    "createdAt": "2025-12-29T10:00:00Z",
+    "updatedAt": "2025-12-29T10:00:00Z"
+  },
+  {
+    "id": "post_k8s_1",
+    "content": "Utilise `kubectl describe pod [nom_du_pod]` pour voir les logs d'erreur.",
+    "userId": "user_clkfm",
+    "threadId": "thread_k8s_pods",
+    "createdAt": "2025-12-30T16:00:00Z",
+    "updatedAt": "2025-12-30T16:00:00Z"
   }
 ]

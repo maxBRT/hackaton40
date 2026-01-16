@@ -7,5 +7,50 @@
     "courseId": "course_react",
     "createdAt": "2025-12-26T14:00:00Z",
     "updatedAt": "2025-12-26T14:00:00Z"
+  },
+  {
+    "id": "thread_node_express",
+    "title": "Express vs Fastify",
+    "content": "Lequel est le meilleur pour une API de taille moyenne ?",
+    "userId": "user_clj1",
+    "courseId": "course_node",
+    "createdAt": "2025-12-27T10:00:00Z",
+    "updatedAt": "2025-12-27T10:00:00Z"
+  },
+  {
+    "id": "thread_python_ds",
+    "title": "Python pour la data",
+    "content": "Pourquoi Python est-il si populaire pour la data science par rapport à R ?",
+    "userId": "user_3",
+    "courseId": "course_python",
+    "createdAt": "2025-12-28T11:00:00Z",
+    "updatedAt": "2025-12-28T11:00:00Z"
+  },
+  {
+    "id": "thread_docker_volumes",
+    "title": "Problème de volumes Docker",
+    "content": "Mes données ne sont pas persistées après un restart du container.",
+    "userId": "user_4",
+    "courseId": "course_docker",
+    "createdAt": "2025-12-29T09:00:00Z",
+    "updatedAt": "2025-12-29T09:00:00Z"
+  },
+  {
+    "id": "thread_k8s_pods",
+    "title": "Pods en statut CrashLoopBackOff",
+    "content": "Comment debugger un pod qui crash en boucle ?",
+    "userId": "user_6",
+    "courseId": "course_kubernetes",
+    "createdAt": "2025-12-30T15:00:00Z",
+    "updatedAt": "2025-12-30T15:00:00Z"
+  },
+  {
+    "id": "thread_flutter_state",
+    "title": "Gestion d'état en Flutter",
+    "content": "Provider, Riverpod, ou Bloc ? Que choisir en 2026 ?",
+    "userId": "user_7",
+    "courseId": "course_flutter",
+    "createdAt": "2026-01-02T14:00:00Z",
+    "updatedAt": "2026-01-02T14:00:00Z"
   }
 ]

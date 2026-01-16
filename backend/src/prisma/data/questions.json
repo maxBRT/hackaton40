@@ -16,5 +16,17 @@
     "answers": ["x = 5", "int x = 5", "var x = 5", "let x = 5"],
     "correctAnswer": 0,
     "quizId": "quiz_python_vars"
+  },
+  {
+    "id": 400,
+    "answers": ["Côté client", "Côté serveur", "Les deux", "Aucun des deux"],
+    "correctAnswer": 1,
+    "quizId": "quiz_node_intro"
+  },
+  {
+    "id": 500,
+    "answers": ["Une machine virtuelle", "Un conteneur", "Un langage", "Un OS"],
+    "correctAnswer": 1,
+    "quizId": "quiz_docker_intro"
   }
 ]

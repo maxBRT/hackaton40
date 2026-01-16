@@ -10,5 +10,29 @@
     "courseId": "course_python",
     "completed": true,
     "completedAt": "2025-12-20T16:00:00Z"
+  },
+  {
+    "userId": "user_3",
+    "courseId": "course_react",
+    "completed": false,
+    "completedAt": null
+  },
+  {
+    "userId": "user_4",
+    "courseId": "course_docker",
+    "completed": false,
+    "completedAt": null
+  },
+  {
+    "userId": "user_6",
+    "courseId": "course_kubernetes",
+    "completed": false,
+    "completedAt": null
+  },
+  {
+    "userId": "user_7",
+    "courseId": "course_flutter",
+    "completed": true,
+    "completedAt": "2026-01-10T10:00:00Z"
   }
 ]

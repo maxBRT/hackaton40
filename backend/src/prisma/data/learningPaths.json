@@ -14,5 +14,29 @@
     "author": "Dr. Marie Curie",
     "createdAt": "2025-08-05T09:00:00Z",
     "updatedAt": "2025-08-05T09:00:00Z"
+  },
+  {
+    "id": "lp_devops",
+    "title": "DevOps & Cloud Computing",
+    "description": "Apprenez à déployer et gérer des infrastructures à l'échelle.",
+    "author": "Jean Dupont",
+    "createdAt": "2025-09-01T10:00:00Z",
+    "updatedAt": "2025-09-01T10:00:00Z"
+  },
+  {
+    "id": "lp_cyber",
+    "title": "Sécurité Informatique",
+    "description": "Protégez les systèmes et les réseaux contre les cyberattaques.",
+    "author": "Alice Smith",
+    "createdAt": "2025-09-10T14:00:00Z",
+    "updatedAt": "2025-09-10T14:00:00Z"
+  },
+  {
+    "id": "lp_mobile",
+    "title": "Développement Mobile",
+    "description": "Créez des applications natives pour iOS et Android.",
+    "author": "Bob Jones",
+    "createdAt": "2025-09-15T11:00:00Z",
+    "updatedAt": "2025-09-15T11:00:00Z"
   }
 ]

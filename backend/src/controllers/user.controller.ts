@@ -122,6 +122,26 @@ export const userInfo = async (req: Request, res: Response) => {
         }
 };
 
+export const getUserInfo = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id as string;
+        const user = await prisma.user.findUnique({where: {id: userId}});
+        if (!user) {
+            return res.status(404).json({message: "User not found"});
+        }
+        return res.status(200).json({
+            success: true,
+            message: "User info fetched successfully",
+            data: user
+        });
+    }catch (error: any) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+}
 
 
 const createJWT = (userId: string, userEmail: string, role: string): string => {

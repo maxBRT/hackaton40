@@ -3,7 +3,8 @@ import {
     createForumThread,
     listForumThreads,
     getForumThread,
-    updateForumThread, deleteForumThread, listForumPosts, createForumPost, updateForumPost, deleteForumPost
+    updateForumThread, deleteForumThread, listForumPosts, createForumPost, updateForumPost, deleteForumPost,
+    listForumThreadsForCourse
 } from "../controllers/forum.controller";
 import { validate } from '../middleware/validate';
 import { IdParamSchema, PostIdParamSchema } from '../schemas/common.schema';
@@ -12,7 +13,8 @@ import {CreateForumPostSchema, CreateForumThreadSchema} from "../schemas/forum.s
 const router = Router();
 
 //Forum Threads
-router.get("/courses/:id", validate(IdParamSchema, "params"), listForumThreads);
+router.get("/", listForumThreads);
+router.get("/courses/:id", validate(IdParamSchema, "params"), listForumThreadsForCourse);
 router.get("/:id", validate(IdParamSchema, "params"), getForumThread);
 router.post("/courses/:id", validate({ params: IdParamSchema, body: CreateForumThreadSchema }), createForumThread);
 router.put("/:id", validate({ params: IdParamSchema, body: CreateForumThreadSchema.partial() }), updateForumThread);

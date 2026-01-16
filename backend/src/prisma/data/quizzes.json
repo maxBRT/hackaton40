@@ -12,5 +12,19 @@
     "description": "Testez votre compréhension des variables et des types.",
     "status": true,
     "lessonId": "lesson_python_vars"
+  },
+  {
+    "id": "quiz_node_intro",
+    "title": "Quiz Node.js",
+    "description": "Bases de Node.js.",
+    "status": true,
+    "lessonId": "lesson_node_intro"
+  },
+  {
+    "id": "quiz_docker_intro",
+    "title": "Quiz Docker",
+    "description": "Comprendre les conteneurs.",
+    "status": true,
+    "lessonId": "lesson_docker_intro"
   }
 ]

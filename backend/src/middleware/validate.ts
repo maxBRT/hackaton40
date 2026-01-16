@@ -20,11 +20,13 @@ export function validate(schemas: ValidationTargets | ZodSchema, property: "body
       if (!result.success) {
         return res.status(400).json({
           success: false,
-          errors: result.error.format(),
+          errors: result.error,
         });
       }
 
-      req[prop as keyof Request] = result.data;
+      if (prop === "body" || prop === "query" || prop === "params") {
+        req[prop] = result.data;
+      }
     }
 
     next();

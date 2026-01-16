@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { registry } from "../docs/openapi.registry";
+import {CourseSchema} from "./course.schema";
 
 export const ForumThreadSchema = z.object({
   id: z.string().openapi({ example: "cl01234567890abcdef" }),
@@ -9,6 +10,7 @@ export const ForumThreadSchema = z.object({
   courseId: z.string().openapi({ example: "cl01234567890abcdef" }),
   createdAt: z.string(),
   updatedAt: z.string(),
+  course: CourseSchema
 });
 
 export const ForumPostSchema = z.object({
@@ -23,10 +25,33 @@ export const ForumPostSchema = z.object({
 
 registry.registerPath({
   method: "get",
+  path: "/api/forum-threads",
+  tags: ["Forum"],
+  summary: "List all forum threads",
+  operationId: "listForumThreads",
+  security: [{ bearerAuth: [] }],
+  responses:  {
+    200: {
+      description: "List of threads",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            message: z.string(),
+            data: z.array(ForumThreadSchema),
+          }),
+        },
+      },
+    },
+  },
+})
+
+registry.registerPath({
+  method: "get",
   path: "/api/forum-threads/courses/{id}",
   tags: ["Forum"],
   summary: "List forum threads for a course",
-  operationId: "listForumThreads",
+  operationId: "listForumThreadsForCourse",
   security: [{ bearerAuth: [] }],
   request: {
     params: z.object({
@@ -39,7 +64,8 @@ registry.registerPath({
       content: {
         "application/json": {
           schema: z.object({
-            status: z.string(),
+            success: z.boolean(),
+            message: z.string(),
             data: z.array(ForumThreadSchema),
           }),
         },
@@ -79,7 +105,8 @@ registry.registerPath({
       content: {
         "application/json": {
           schema: z.object({
-            status: z.string(),
+            success: z.boolean(),
+            message: z.string(),
             data: ForumThreadSchema,
           }),
         },
@@ -106,7 +133,8 @@ registry.registerPath({
       content: {
         "application/json": {
           schema: z.object({
-            status: z.string(),
+            success: z.boolean(),
+            message: z.string(),
             data: z.object({
               thread: ForumThreadSchema.extend({ posts: z.array(ForumPostSchema) }),
             }),
@@ -147,8 +175,161 @@ registry.registerPath({
       content: {
         "application/json": {
           schema: z.object({
-            status: z.string(),
+            success: z.boolean(),
+            message: z.string(),
             data: ForumPostSchema,
+          }),
+        },
+      },
+    },
+  },
+});
+
+registry.registerPath({
+  method: "get",
+  path: "/api/forum-threads/{id}",
+  tags: ["Forum"],
+  summary: "Get a forum thread",
+  operationId: "getForumThread",
+  security: [{ bearerAuth: [] }],
+  request: {
+    params: z.object({
+      id: z.string(),
+    }),
+  },
+  responses: {
+    200: {
+      description: "Forum thread",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            message: z.string(),
+            data: ForumThreadSchema,
+          }),
+        },
+      },
+    },
+  },
+});
+
+registry.registerPath({
+  method: "put",
+  path: "/api/forum-threads/{id}",
+  tags: ["Forum"],
+  summary: "Update a forum thread",
+  operationId: "updateForumThread",
+  security: [{ bearerAuth: [] }],
+  request: {
+    params: z.object({
+      id: z.string(),
+    }),
+    body: {
+      content: {
+        "application/json": {
+          schema: CreateForumThreadSchema.partial(),
+        },
+      },
+    },
+  },
+  responses: {
+    200: {
+      description: "Thread updated",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            message: z.string(),
+            data: ForumThreadSchema,
+          }),
+        },
+      },
+    },
+  },
+});
+
+registry.registerPath({
+  method: "delete",
+  path: "/api/forum-threads/{id}",
+  tags: ["Forum"],
+  summary: "Delete a forum thread",
+  operationId: "deleteForumThread",
+  security: [{ bearerAuth: [] }],
+  request: {
+    params: z.object({
+      id: z.string(),
+    }),
+  },
+  responses: {
+    200: {
+      description: "Thread deleted",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            message: z.string(),
+          }),
+        },
+      },
+    },
+  },
+});
+
+registry.registerPath({
+  method: "put",
+  path: "/api/forum-threads/posts/{postId}",
+  tags: ["Forum"],
+  summary: "Update a forum post",
+  operationId: "updateForumPost",
+  security: [{ bearerAuth: [] }],
+  request: {
+    params: z.object({
+      postId: z.string(),
+    }),
+    body: {
+      content: {
+        "application/json": {
+          schema: CreateForumPostSchema.partial(),
+        },
+      },
+    },
+  },
+  responses: {
+    200: {
+      description: "Post updated",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            message: z.string(),
+            data: ForumPostSchema,
+          }),
+        },
+      },
+    },
+  },
+});
+
+registry.registerPath({
+  method: "delete",
+  path: "/api/forum-threads/posts/{postId}",
+  tags: ["Forum"],
+  summary: "Delete a forum post",
+  operationId: "deleteForumPost",
+  security: [{ bearerAuth: [] }],
+  request: {
+    params: z.object({
+      postId: z.string(),
+    }),
+  },
+  responses: {
+    200: {
+      description: "Post deleted",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            message: z.string(),
           }),
         },
       },
