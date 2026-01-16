@@ -46,7 +46,7 @@ const ForumItem: React.FC<ForumItemProps> = ({ thread }) => {
     }, [thread.userId]) 
     
     return (
-        <Item variant={"outline"} className="my-2 w-full max-w-2xl hover:bg-gray-50 hover:scale-101 transition-transform duration-200">
+        <Item variant={"outline"} className="my-2 w-full max-w-4xl hover:bg-gray-50 hover:scale-101 transition-transform duration-200">
             <ItemHeader>
                 <Avatar className="w-8 h-8">
                     <AvatarImage src={avatar} className="rounded-full" /> 
