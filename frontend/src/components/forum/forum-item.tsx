@@ -9,6 +9,7 @@ import {useNavigate} from "react-router-dom";
 import api from "@/utils/axiosRequestInterceptor.ts";
 import {handleApiError} from "@/utils/handleApiError.ts";
 import {ArrowRightIcon} from "lucide-react";
+import {Spinner} from "@/components/ui/spinner.tsx";
 
 interface ForumItemProps {
     thread: ForumThread
@@ -37,7 +38,6 @@ const ForumItem: React.FC<ForumItemProps> = ({ thread }) => {
                 console.error(error)
             }
         }
-      
         fetchUser();
     }, [thread.userId, error]);
     
@@ -53,7 +53,7 @@ const ForumItem: React.FC<ForumItemProps> = ({ thread }) => {
                     <AvatarFallback>U</AvatarFallback>
                 </Avatar>
                 <span>
-                    {user ? user.username : "Loading..."} 
+                    {user ? user.username : <Spinner/>} 
                 </span>
             </ItemHeader> 
             <ItemContent>
