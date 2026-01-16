@@ -64,6 +64,7 @@ make dev
 
 ## L'intelligence artificielle a été utilisée dans ce projet pour :
 - Déboguer le code.
+- Générer les message de commit github
 - Conseils sur les meilleures pratiques.
 - Proposer des suggestions de refactorisation.
 - Assister à la résolution de problèmes techniques.
@@ -71,7 +72,8 @@ make dev
 - Corriger les fautes d'orthographe dans la documentation.
 
 ### Mention importante (Maxime)
-La configuration de Zod et d’OpenAPI a été implémentée manuellement (le code n’a pas été généré par l’IA). Cependant, lors de la connexion du frontend au backend, certaines routes ont été modifiées afin d’offrir une réponse plus adaptée aux besoins de l’application. À ce moment-là, j’ai utilisé l’IA pour refléter ces changements dans le schéma OpenAPI.
-J'estime que cette utilisation pourrait être considérée comme de la génération de code et c'est pourquoi je le mentionne ouvertement. Mon but n'était pas de déléguer mon travail à l'IA, mais bien de l'utiliser comme un outil pour compléter mon workflow.
+La configuration de Zod et d’OpenAPI a été entièrement implémentée manuellement,sans génération automatique de code par l’IA. Lors de l’intégration du frontend avec le backend, certaines routes ont été ajustées afin de fournir des réponses mieux adaptées aux besoins de l’application.
+
+L’IA a été utilisée comme outil de soutien pour synchroniser et mettre à jour la documentation OpenAPI à partir du code que j’ai écrit. Cette utilisation pourrait être interprétée comme une forme de génération de code, c’est pourquoi je la mentionne de manière transparente. Mon objectif n’était pas de déléguer le travail de conception ou d’implémentation à l’IA, mais de l’intégrer à mon workflow afin d’améliorer la cohérence de la documentation.
 
 
