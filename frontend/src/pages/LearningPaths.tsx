@@ -111,7 +111,7 @@ export default function LearningPaths() {
          ------------------------------- */}
       <div className="grid gap-3 mt-6">
         {paths.map((p) => (
-          <Link key={p.id} to={`/path/${p.id}`} className="no-underline">
+          <Link key={p.id} to={`/learning-path/${p.id}`} className="no-underline">
             <Card className="hover:shadow-md transition cursor-pointer">
               <CardHeader>
                 <CardTitle>{p.title}</CardTitle>
