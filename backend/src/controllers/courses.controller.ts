@@ -49,6 +49,44 @@ export async function getCourses(req: Request, res: Response) {
 }
 
 // ============================================
+// GET /courses/:id – Détail d’un cours
+// ============================================
+export async function getCourseById(req: Request, res: Response) {
+  try {
+    const id = req.params.id;
+
+    if (typeof id !== "string") {
+      return res.status(400).json({
+        success: false,
+        message: "Paramètre id invalide",
+      });
+    }
+
+    const course = await prisma.course.findUnique({
+      where: { id },
+      include: {
+        learningPath: true,
+        modules: {
+          orderBy: { position: "asc" },
+          include: { lessons: { orderBy: { position: "asc" } } },
+        },
+      },
+    });
+
+    if (!course) {
+      return res.status(404).json({ success: false, message: "Cours introuvable" });
+    }
+
+    return res.json({ success: true, data: course });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ success: false, message: "Erreur serveur" });
+  }
+}
+
+
+
+// ============================================
 // POST /courses – Création d’un cours (ADMIN)
 // ============================================
 export async function createCourse(req: Request, res: Response) {
