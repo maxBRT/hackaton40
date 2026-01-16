@@ -48,6 +48,7 @@ export function LoginForm({
       }
       if (responseData.data?.token) {
         localStorage.setItem("token", responseData.data.token);
+        window.dispatchEvent(new Event("auth-change"));
         navigate("/dashboard");
       }
     } catch (error) {

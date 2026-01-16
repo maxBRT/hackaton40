@@ -78,5 +78,85 @@
     "currentExp": 900,
     "createdAt": "2025-11-20T14:45:00Z",
     "updatedAt": "2025-11-20T14:45:00Z"
+  },
+  {
+    "id": "user_8",
+    "username": "lucas_dev",
+    "email": "lucas@example.fr",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordlucas",
+    "currentExp": 450,
+    "createdAt": "2025-12-01T10:00:00Z",
+    "updatedAt": "2025-12-01T10:00:00Z"
+  },
+  {
+    "id": "user_9",
+    "username": "sophie_code",
+    "email": "sophie@web-art.fr",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordsophie",
+    "currentExp": 2100,
+    "createdAt": "2025-12-05T14:20:00Z",
+    "updatedAt": "2025-12-05T14:20:00Z"
+  },
+  {
+    "id": "user_10",
+    "username": "thomas_tech",
+    "email": "thomas.tech@startup.io",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordthomas",
+    "currentExp": 120,
+    "createdAt": "2025-12-10T09:15:00Z",
+    "updatedAt": "2025-12-10T09:15:00Z"
+  },
+  {
+    "id": "user_11",
+    "username": "julie_designer",
+    "email": "julie@ux-ui.com",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordjulie",
+    "currentExp": 850,
+    "createdAt": "2025-12-12T16:45:00Z",
+    "updatedAt": "2025-12-12T16:45:00Z"
+  },
+  {
+    "id": "user_12",
+    "username": "marc_data",
+    "email": "marc@analytics.fr",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordmarc",
+    "currentExp": 1500,
+    "createdAt": "2025-12-15T11:00:00Z",
+    "updatedAt": "2025-12-15T11:00:00Z"
+  },
+  {
+    "id": "user_13",
+    "username": "emma_cloud",
+    "email": "emma@azure.com",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordemma",
+    "currentExp": 320,
+    "createdAt": "2025-12-18T13:30:00Z",
+    "updatedAt": "2025-12-18T13:30:00Z"
+  },
+  {
+    "id": "user_14",
+    "username": "nicolas_cyber",
+    "email": "nico@security.net",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordnico",
+    "currentExp": 2500,
+    "createdAt": "2025-12-20T10:00:00Z",
+    "updatedAt": "2025-12-20T10:00:00Z"
+  },
+  {
+    "id": "user_15",
+    "username": "lea_react",
+    "email": "lea@frontend.dev",
+    "role": "USER",
+    "hashedPassword": "$2b$10$hashedpasswordlea",
+    "currentExp": 600,
+    "createdAt": "2025-12-22T15:00:00Z",
+    "updatedAt": "2025-12-22T15:00:00Z"
   }
 ]

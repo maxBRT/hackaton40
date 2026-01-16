@@ -9,7 +9,17 @@
     "updatedAt": "2025-12-26T15:30:00Z"
   },
   {
+    "id": "post_react_resp_2",
+    "title": "Nettoyage de node_modules",
+    "content": "Aussi, essaie de supprimer le dossier node_modules et de refaire un npm install.",
+    "userId": "user_3",
+    "threadId": "thread_react_help",
+    "createdAt": "2025-12-26T16:00:00Z",
+    "updatedAt": "2025-12-26T16:00:00Z"
+  },
+  {
     "id": "post_node_1",
+    "title": "Avantages de Fastify",
     "content": "Perso je préfère Fastify pour les performances, mais Express a une communauté tellement énorme.",
     "userId": "user_clj2",
     "threadId": "thread_node_express",
@@ -17,7 +27,17 @@
     "updatedAt": "2025-12-27T11:00:00Z"
   },
   {
+    "id": "post_node_2",
+    "title": "L'avenir avec Fastify",
+    "content": "Express est plus simple pour débuter, mais Fastify est clairement l'avenir pour les gros projets.",
+    "userId": "user_4",
+    "threadId": "thread_node_express",
+    "createdAt": "2025-12-27T12:30:00Z",
+    "updatedAt": "2025-12-27T12:30:00Z"
+  },
+  {
     "id": "post_python_1",
+    "title": "L'écosystème Python",
     "content": "C'est principalement à cause de Pandas, Scikit-learn et l'écosystème Jupyter.",
     "userId": "user_clj2",
     "threadId": "thread_python_ds",
@@ -25,7 +45,17 @@
     "updatedAt": "2025-12-28T12:00:00Z"
   },
   {
+    "id": "post_python_2",
+    "title": "Python vs R pour l'intégration",
+    "content": "R reste très bon pour les statistiques pures, mais Python gagne sur l'intégration logicielle.",
+    "userId": "user_5",
+    "threadId": "thread_python_ds",
+    "createdAt": "2025-12-28T13:45:00Z",
+    "updatedAt": "2025-12-28T13:45:00Z"
+  },
+  {
     "id": "post_docker_1",
+    "title": "Déclaration des volumes",
     "content": "Tu as probablement oublié de déclarer le volume dans ton docker-compose.yml.",
     "userId": "user_clj1",
     "threadId": "thread_docker_volumes",
@@ -33,11 +63,129 @@
     "updatedAt": "2025-12-29T10:00:00Z"
   },
   {
+    "id": "post_docker_2",
+    "title": "Permissions de dossiers",
+    "content": "Vérifie aussi les permissions sur le dossier hôte que tu montes.",
+    "userId": "user_6",
+    "threadId": "thread_docker_volumes",
+    "createdAt": "2025-12-29T11:20:00Z",
+    "updatedAt": "2025-12-29T11:20:00Z"
+  },
+  {
     "id": "post_k8s_1",
+    "title": "Debugging avec kubectl",
     "content": "Utilise `kubectl describe pod [nom_du_pod]` pour voir les logs d'erreur.",
     "userId": "user_clkfm",
     "threadId": "thread_k8s_pods",
     "createdAt": "2025-12-30T16:00:00Z",
     "updatedAt": "2025-12-30T16:00:00Z"
+  },
+  {
+    "id": "post_k8s_2",
+    "title": "Comprendre CrashLoopBackOff",
+    "content": "CrashLoopBackOff signifie souvent que l'application crash au démarrage. Regarde les logs applicatifs aussi.",
+    "userId": "user_7",
+    "threadId": "thread_k8s_pods",
+    "createdAt": "2025-12-30T17:15:00Z",
+    "updatedAt": "2025-12-30T17:15:00Z"
+  },
+  {
+    "id": "post_flutter_1",
+    "title": "Recommandation Riverpod",
+    "content": "Riverpod est le plus recommandé actuellement par la communauté.",
+    "userId": "user_3",
+    "threadId": "thread_flutter_state",
+    "createdAt": "2026-01-02T15:00:00Z",
+    "updatedAt": "2026-01-02T15:00:00Z"
+  },
+  {
+    "id": "post_flutter_2",
+    "title": "Bloc pour les habitués de React",
+    "content": "Si tu viens du monde React, Bloc pourrait te sembler plus familier (proche de Redux).",
+    "userId": "user_clj1",
+    "threadId": "thread_flutter_state",
+    "createdAt": "2026-01-02T16:30:00Z",
+    "updatedAt": "2026-01-02T16:30:00Z"
+  },
+  {
+    "id": "post_ts_1",
+    "title": "Utilisation de Unknown",
+    "content": "Préférez `unknown` à `any` pour forcer une vérification de type plus tard.",
+    "userId": "user_clj2",
+    "threadId": "thread_typescript_tips",
+    "createdAt": "2026-01-05T11:00:00Z",
+    "updatedAt": "2026-01-05T11:00:00Z"
+  },
+  {
+    "id": "post_ts_2",
+    "title": "Utility Types",
+    "content": "Apprenez à maîtriser `Pick`, `Omit` et `Partial`, ça change la vie.",
+    "userId": "user_15",
+    "threadId": "thread_typescript_tips",
+    "createdAt": "2026-01-05T12:30:00Z",
+    "updatedAt": "2026-01-05T12:30:00Z"
+  },
+  {
+    "id": "post_sec_1",
+    "title": "Utiliser Helmet",
+    "content": "Installe `helmet` pour configurer les headers HTTP de sécurité automatiquement.",
+    "userId": "user_clkfm",
+    "threadId": "thread_backend_security",
+    "createdAt": "2026-01-06T13:00:00Z",
+    "updatedAt": "2026-01-06T13:00:00Z"
+  },
+  {
+    "id": "post_ai_1",
+    "title": "Cursor est incroyable",
+    "content": "J'ai switché sur Cursor récemment et la compréhension du contexte du projet est bluffante.",
+    "userId": "user_9",
+    "threadId": "thread_ai_dev",
+    "createdAt": "2026-01-07T10:30:00Z",
+    "updatedAt": "2026-01-07T10:30:00Z"
+  },
+  {
+    "id": "post_perf_1",
+    "title": "Attention au premature optimization",
+    "content": "N'utilise `useMemo` que si tu as réellement un problème de performance mesuré avec le profiler React.",
+    "userId": "user_clj2",
+    "threadId": "thread_frontend_perf",
+    "createdAt": "2026-01-08T15:45:00Z",
+    "updatedAt": "2026-01-08T15:45:00Z"
+  },
+  {
+    "id": "post_career_1",
+    "title": "Soft skills avant tout",
+    "content": "On attend pas d'un junior qu'il sache tout, mais qu'il sache apprendre et communiquer.",
+    "userId": "user_12",
+    "threadId": "thread_career_junior",
+    "createdAt": "2026-01-09T17:30:00Z",
+    "updatedAt": "2026-01-09T17:30:00Z"
+  },
+  {
+    "id": "post_rust_1",
+    "title": "Go pour la simplicité",
+    "content": "Rust est génial mais la courbe d'apprentissage est raide. Go permet de livrer vite.",
+    "userId": "user_4",
+    "threadId": "thread_rust_vs_go",
+    "createdAt": "2026-01-10T12:00:00Z",
+    "updatedAt": "2026-01-10T12:00:00Z"
+  },
+  {
+    "id": "post_db_1",
+    "title": "Postgres JSONB",
+    "content": "Avec le support du JSONB dans Postgres, le besoin de MongoDB a énormément diminué.",
+    "userId": "user_14",
+    "threadId": "thread_db_nosql_sql",
+    "createdAt": "2026-01-11T14:50:00Z",
+    "updatedAt": "2026-01-11T14:50:00Z"
+  },
+  {
+    "id": "post_clean_1",
+    "title": "Refactoring de Martin Fowler",
+    "content": "C'est la bible pour moi, indispensable pour tout développeur sérieux.",
+    "userId": "user_3",
+    "threadId": "thread_clean_code",
+    "createdAt": "2026-01-12T10:15:00Z",
+    "updatedAt": "2026-01-12T10:15:00Z"
   }
 ]
