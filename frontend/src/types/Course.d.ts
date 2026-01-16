@@ -9,3 +9,9 @@ export type Course = {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export type CourseResponse = {
+    success: boolean;
+    message: string;
+    data: Course[];
+}

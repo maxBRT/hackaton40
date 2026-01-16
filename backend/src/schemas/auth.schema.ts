@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { registry } from "../docs/openapi.registry";
-import { IdParamSchema } from "./common.schema";
 
 export const LoginSchema = z.object({
   email: z.string().openapi({ example: "user@example.com" }),
@@ -126,7 +125,9 @@ registry.registerPath({
   summary: "Get user info by id",
   operationId: "getUserInfo",
   request: {
-    params: IdParamSchema,
+    params: z.object({
+      id: z.string(),
+    }),
   },
   responses: {
     200: {

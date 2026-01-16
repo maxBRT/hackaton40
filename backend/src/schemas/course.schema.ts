@@ -84,3 +84,30 @@ registry.registerPath({
     500: { description: "Internal server error" },
   },
 });
+
+registry.registerPath({
+  method: "get",
+  path: "/api/courses/{id}",
+  tags: ["Courses"],
+  summary: "Get course by ID",
+  operationId: "getCourseById",
+  request: {
+    params: z.object({
+      id: z.string(),
+    }),
+  },
+  responses: {
+    200: {
+      description: "Course details",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            data: CourseSchema,
+          }),
+        },
+      },
+    },
+    404: { description: "Course not found" },
+  },
+});

@@ -3,7 +3,7 @@ import prisma from "../database/prisma";
 
 export const listForumThreads = async (req: Request, res: Response) => {
     try {
-        const threads = await prisma.forumThread.findMany({ include: { course: true }})
+        const threads = await prisma.forumThread.findMany({ include: { course: true, user: { select: { username: true }} }})
         return res.status(200).json({ success: true, message: "Threads fetched successfully", data: threads })
     }catch (error: any) {
         console.error(error);
@@ -59,7 +59,7 @@ export const createForumThread = async (req: Request<any,  CreateForumThreadBody
                 content: data.content,
                 courseId: data.courseId || lessonId,
                 userId: user.id
-            }});
+            }, include: { user: true, course: true } });
         return res.status(201).json({ success: true, message: "Thread created successfully", data: forumThread });
     } catch (error: any) {
         console.error(error);

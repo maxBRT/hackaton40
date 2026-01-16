@@ -11,7 +11,7 @@ export const CourseProgressSchema = z.object({
 
 registry.registerPath({
   method: "get",
-  path: "/api/progress/courses/{id}/progress",
+  path: "/api/courses/{id}/progress",
   tags: ["Progress"],
   summary: "Get progress for a course",
   operationId: "getCourseProgress",

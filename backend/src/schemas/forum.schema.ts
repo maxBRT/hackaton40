@@ -112,6 +112,8 @@ registry.registerPath({
         },
       },
     },
+    400: { description: "Validation error" },
+    404: { description: "Course not found" },
   },
 });
 
@@ -182,6 +184,8 @@ registry.registerPath({
         },
       },
     },
+    400: { description: "Validation error" },
+    404: { description: "Thread not found" },
   },
 });
 

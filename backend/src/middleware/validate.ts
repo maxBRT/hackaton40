@@ -24,8 +24,15 @@ export function validate(schemas: ValidationTargets | ZodSchema, property: "body
         });
       }
 
-      if (prop === "body" || prop === "query" || prop === "params") {
-        req[prop] = result.data;
+      if (prop === "body") {
+        req.body = result.data;
+      } else if (prop === "query" || prop === "params") {
+        // Clear existing keys and assign validated data to the existing reference
+        const target = req[prop] as any;
+        for (const key in target) {
+          delete target[key];
+        }
+        Object.assign(target, result.data);
       }
     }
 

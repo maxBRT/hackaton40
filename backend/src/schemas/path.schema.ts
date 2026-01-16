@@ -31,3 +31,30 @@ registry.registerPath({
     500: { description: "Internal server error" },
   },
 });
+
+registry.registerPath({
+  method: "get",
+  path: "/api/learning-paths/{id}",
+  tags: ["Learning Paths"],
+  summary: "Get learning path by ID",
+  operationId: "getLearningPathById",
+  request: {
+    params: z.object({
+      id: z.string(),
+    }),
+  },
+  responses: {
+    200: {
+      description: "Learning path details",
+      content: {
+        "application/json": {
+          schema: z.object({
+            success: z.boolean(),
+            data: LearningPathSchema,
+          }),
+        },
+      },
+    },
+    404: { description: "Learning path not found" },
+  },
+});

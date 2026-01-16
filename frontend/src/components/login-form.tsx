@@ -90,8 +90,8 @@ export function LoginForm({
             <Button type="submit">Login</Button>
           </Field>
         </FieldGroup>
+        {error && <p className="text-red-500">{error}</p>}
       </form>
-      {error && <p className="text-red-500">{error}</p>}
     </div>
   )
 }

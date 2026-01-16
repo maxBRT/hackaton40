@@ -9,3 +9,9 @@ interface User {
     userCourses?: [];
     lessonProgress?: []; 
 }
+
+interface MeResponse {
+    success: boolean;
+    message: string;
+    data: User; 
+}

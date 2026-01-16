@@ -18,7 +18,11 @@ export const router = createBrowserRouter([
       { index: true, element: <App /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
-      { path: "forum", element: <ForumThreads />},
+      { path: "forum", element: (
+          <ProtectedRoute>
+            <ForumThreads />
+          </ProtectedRoute>
+        )},
 
       {
         path: "dashboard",
