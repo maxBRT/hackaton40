@@ -76,7 +76,7 @@ export default function Course() {
         setCourse(res.data.data);
       } catch (e: any) {
         setError("Impossible de charger le cours. Vérifie le backend / endpoint.");
-        // fallback 
+        // fallback
         setCourse({
           id,
           title: "Cours",
@@ -218,9 +218,7 @@ export default function Course() {
                               <p className="font-medium truncate">
                                 {l.position}. {l.title}
                               </p>
-                              <p className="text-xs text-muted-foreground">
-                                {l.difficulty}
-                              </p>
+                              <p className="text-xs text-muted-foreground">{l.difficulty}</p>
                             </div>
                             <Link className="text-sm text-primary shrink-0" to={`/lesson/${l.id}`}>
                               Ouvrir →
