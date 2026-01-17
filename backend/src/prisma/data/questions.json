@@ -12,9 +12,27 @@
     "quizId": "quiz_react_intro"
   },
   {
+    "id": 201,
+    "answers": ["Le DOM est mis à jour entièrement à chaque changement", "Il utilise une copie légère du DOM pour optimiser les performances", "Il est plus lent que le DOM réel", "Il ne permet pas d'utiliser JSX"],
+    "correctAnswer": 1,
+    "quizId": "quiz_react_intro"
+  },
+  {
     "id": 300,
     "answers": ["x = 5", "int x = 5", "var x = 5", "let x = 5"],
     "correctAnswer": 0,
+    "quizId": "quiz_python_vars"
+  },
+  {
+    "id": 301,
+    "answers": ["Statique", "Fort", "Dynamique", "Faible"],
+    "correctAnswer": 2,
+    "quizId": "quiz_python_vars"
+  },
+  {
+    "id": 302,
+    "answers": ["()", "{}", "[]", "<>"],
+    "correctAnswer": 2,
     "quizId": "quiz_python_vars"
   },
   {
@@ -24,8 +42,32 @@
     "quizId": "quiz_node_intro"
   },
   {
+    "id": 401,
+    "answers": ["V8", "SpiderMonkey", "Chakra", "JavaScriptCore"],
+    "correctAnswer": 0,
+    "quizId": "quiz_node_intro"
+  },
+  {
+    "id": 402,
+    "answers": ["Il est bloquant", "Il est asynchrone et orienté événements", "Il utilise plusieurs threads pour chaque requête", "Il ne possède pas de gestionnaire de paquets"],
+    "correctAnswer": 1,
+    "quizId": "quiz_node_intro"
+  },
+  {
     "id": 500,
     "answers": ["Une machine virtuelle", "Un conteneur", "Un langage", "Un OS"],
+    "correctAnswer": 1,
+    "quizId": "quiz_docker_intro"
+  },
+  {
+    "id": 501,
+    "answers": ["Une instance exécutable d'une image", "Un fichier de configuration texte", "Un registre en ligne", "Le noyau du système d'exploitation"],
+    "correctAnswer": 0,
+    "quizId": "quiz_docker_intro"
+  },
+  {
+    "id": 502,
+    "answers": ["Ils sont plus lourds que les VM", "Ils partagent le noyau de l'OS hôte", "Ils incluent un OS complet", "Ils sont plus lents à démarrer"],
     "correctAnswer": 1,
     "quizId": "quiz_docker_intro"
   }

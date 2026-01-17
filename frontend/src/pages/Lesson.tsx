@@ -1,94 +1,51 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { QuizProvider, useActions, useQuiz } from "react-quiz-kit";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {QuizComponent} from "@/components/quiz"
 import { Separator } from "@/components/ui/separator"
 import api from "@/utils/axiosRequestInterceptor"
 import { handleApiError } from "@/utils/handleApiError"
+import type { Lesson, Quiz } from "@/types/Quiz";
+import ReactMarkdown from "react-markdown";
 
 type ApiResponse<T> = {
     success: boolean
     data: T
 }
 
-type Lesson = {
-    id: string
-    title: string
-    content: string
-    moduleId: string
-    position: number
-    difficulty: string
-    createdAt: string
-    updatedAt: string
-}
-
-type QuizQuestion = {
-    id: number
-    question: string
-    answers: string[]
-    correctAnswer?: number
-}
-
-type Quiz = {
-    id: string
-    title: string
-    description: string
-    lessonId: string
-    status: boolean
-    questions: QuizQuestion[]
-}
-
-export default function LessonPage() {
-    const { id } = useParams()
+function LessonPage() {
+    const {id} = useParams<{ id: string }>()
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
     const [lesson, setLesson] = useState<Lesson | null>(null)
     const [quiz, setQuiz] = useState<Quiz | null>(null)
 
-    const [answers, setAnswers] = useState<Record<string, number>>({})
-
     useEffect(() => {
-        const fetchdata = async () => {
-            setLoading(true)
+        const fetchData = async () => {
             try {
                 const response = await api.get<ApiResponse<Lesson>>(`/lessons/${id}`)
+                console.log(response)
                 const responseData = response.data
                 setLesson(responseData.data)
             } catch (error) {
+                console.log(error)
                 handleApiError(error, setError)
-
-            } finally {
-                setLoading(false)
             }
-            setLoading(true)
             try {
                 const response = await api.get<ApiResponse<Quiz>>(`/quiz/lessons/${id}`)
+                console.log(response)
                 const responseData = response.data
-                setQuiz(responseData.data)
+                const quiz = responseData.data
+                setQuiz(quiz)
             } catch (error) {
+                console.log(error)
                 handleApiError(error, setError)
-
-            } finally {
-                setLoading(false)
             }
-        } 
-        fetchdata()
-    }, [id])
-
-    const markCompleted = async () => {
-        try {
-            await api.post(`/lessons/${id}/complete`, null)
-        } catch (e) {
-            handleApiError(e,setError)
         }
-    }
-
-    if (loading) {
-        return <div className="p-6 text-sm text-muted-foreground">Chargement...</div>
-    }
+        fetchData();
+    }, [id])
 
     if (error) {
         return (
@@ -103,8 +60,6 @@ export default function LessonPage() {
         )
     }
 
-    const questions = quiz?.questions ?? []
-
     return (
         <div className="p-6">
             <div className="flex items-start justify-between gap-4">
@@ -117,7 +72,7 @@ export default function LessonPage() {
                 </Button>
             </div>
 
-            <Separator className="my-6" />
+            <Separator className="my-6"/>
 
             {/* Contenu leçon */}
             <Card>
@@ -125,16 +80,18 @@ export default function LessonPage() {
                     <CardTitle>Contenu</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="whitespace-pre-wrap text-sm leading-6">
+                    <ReactMarkdown>
                         {lesson?.content ?? "Aucun contenu pour cette leçon."}
-                    </div>
+                    </ReactMarkdown>
                 </CardContent>
             </Card>
 
-            <QuizProvider>
-
-            </QuizProvider>
+            {quiz && (
+                <QuizComponent title={quiz.title} questions={quiz.questions} />
+            )}
 
         </div>
     )
 }
+
+export default LessonPage
