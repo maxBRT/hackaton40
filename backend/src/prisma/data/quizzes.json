@@ -26,5 +26,33 @@
     "description": "Comprendre les conteneurs.",
     "status": true,
     "lessonId": "lesson_docker_intro"
+  },
+  {
+    "id": "quiz_react_setup",
+    "title": "Quiz Installation de React",
+    "description": "Vérifiez vos connaissances sur l'installation de React.",
+    "status": true,
+    "lessonId": "lesson_react_setup"
+  },
+  {
+    "id": "quiz_k8s_intro",
+    "title": "Quiz Kubernetes",
+    "description": "Testez vos bases sur Kubernetes.",
+    "status": true,
+    "lessonId": "lesson_k8s_intro"
+  },
+  {
+    "id": "quiz_pentest_recon",
+    "title": "Quiz Reconnaissance",
+    "description": "Quiz sur la phase de reconnaissance en pentest.",
+    "status": true,
+    "lessonId": "lesson_pentest_recon"
+  },
+  {
+    "id": "quiz_flutter_widgets",
+    "title": "Quiz Widgets Flutter",
+    "description": "Comprendre les widgets dans Flutter.",
+    "status": true,
+    "lessonId": "lesson_flutter_widgets"
   }
 ]

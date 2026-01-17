@@ -4,11 +4,20 @@ import prisma from "../database/prisma";
 export const getQuiz = async (req: Request, res: Response) => {
     try{
         const lessonId = req.params.id;
-        const lesson = await prisma.lesson.findUnique({where: {id: lessonId}, include: {quizzes: true}});
+        const lesson = await prisma.lesson.findUnique({
+            where: {id: lessonId}, 
+            include: {
+                quizzes: {
+                    include: {
+                        questions: true
+                    }
+                }
+            }
+        });
         if (!lesson) {
             return res.status(404).json({success: false, message: "Lesson not found"});
         }
-        return res.status(200).json({success: true, data: lesson.quizzes});
+        return res.status(200).json({success: true, data: lesson.quizzes[0] || null});
     } catch (error: any) {
         console.error(error);
         return res.status(500).json({success: false, message: error.message});

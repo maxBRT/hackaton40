@@ -1,74 +1,170 @@
 [
   {
     "id": 100,
+    "question": "Qu'est-ce que React ?",
     "answers": ["Une bibliothèque JavaScript", "Un framework complet", "Un langage de programmation", "Une base de données"],
     "correctAnswer": 0,
     "quizId": "quiz_react_intro"
   },
   {
     "id": 200,
+    "question": "Qui a créé React ?",
     "answers": ["Facebook", "Google", "Microsoft", "Twitter"],
     "correctAnswer": 0,
     "quizId": "quiz_react_intro"
   },
   {
     "id": 201,
+    "question": "Quel est l'avantage du Virtual DOM ?",
     "answers": ["Le DOM est mis à jour entièrement à chaque changement", "Il utilise une copie légère du DOM pour optimiser les performances", "Il est plus lent que le DOM réel", "Il ne permet pas d'utiliser JSX"],
     "correctAnswer": 1,
     "quizId": "quiz_react_intro"
   },
   {
     "id": 300,
+    "question": "Comment déclarer une variable en Python ?",
     "answers": ["x = 5", "int x = 5", "var x = 5", "let x = 5"],
     "correctAnswer": 0,
     "quizId": "quiz_python_vars"
   },
   {
     "id": 301,
+    "question": "Quel est le type de typage en Python ?",
     "answers": ["Statique", "Fort", "Dynamique", "Faible"],
     "correctAnswer": 2,
     "quizId": "quiz_python_vars"
   },
   {
     "id": 302,
+    "question": "Quel symbole est utilisé pour une liste en Python ?",
     "answers": ["()", "{}", "[]", "<>"],
     "correctAnswer": 2,
     "quizId": "quiz_python_vars"
   },
   {
     "id": 400,
+    "question": "Où s'exécute Node.js ?",
     "answers": ["Côté client", "Côté serveur", "Les deux", "Aucun des deux"],
     "correctAnswer": 1,
     "quizId": "quiz_node_intro"
   },
   {
     "id": 401,
+    "question": "Quel moteur JS utilise Node.js ?",
     "answers": ["V8", "SpiderMonkey", "Chakra", "JavaScriptCore"],
     "correctAnswer": 0,
     "quizId": "quiz_node_intro"
   },
   {
     "id": 402,
+    "question": "Quelle est la principale caractéristique de Node.js ?",
     "answers": ["Il est bloquant", "Il est asynchrone et orienté événements", "Il utilise plusieurs threads pour chaque requête", "Il ne possède pas de gestionnaire de paquets"],
     "correctAnswer": 1,
     "quizId": "quiz_node_intro"
   },
   {
     "id": 500,
+    "question": "Qu'est-ce qu'un conteneur Docker ?",
     "answers": ["Une machine virtuelle", "Un conteneur", "Un langage", "Un OS"],
     "correctAnswer": 1,
     "quizId": "quiz_docker_intro"
   },
   {
     "id": 501,
+    "question": "Qu'est-ce qu'une image Docker ?",
     "answers": ["Une instance exécutable d'une image", "Un fichier de configuration texte", "Un registre en ligne", "Le noyau du système d'exploitation"],
     "correctAnswer": 0,
     "quizId": "quiz_docker_intro"
   },
   {
     "id": 502,
+    "question": "Pourquoi utiliser Docker ?",
     "answers": ["Ils sont plus lourds que les VM", "Ils partagent le noyau de l'OS hôte", "Ils incluent un OS complet", "Ils sont plus lents à démarrer"],
     "correctAnswer": 1,
     "quizId": "quiz_docker_intro"
+  },
+  {
+    "id": 600,
+    "question": "Quelle commande permet de créer un nouveau projet React avec Vite ?",
+    "answers": ["npm create vite@latest", "npm install react", "create-react-app", "vite init"],
+    "correctAnswer": 0,
+    "quizId": "quiz_react_setup"
+  },
+  {
+    "id": 601,
+    "question": "Dans quel dossier se trouve généralement le code source d'un projet React ?",
+    "answers": ["src", "dist", "public", "node_modules"],
+    "correctAnswer": 0,
+    "quizId": "quiz_react_setup"
+  },
+  {
+    "id": 602,
+    "question": "Quelle commande permet de lancer le serveur de développement Vite ?",
+    "answers": ["npm run dev", "npm start", "npm run serve", "vite build"],
+    "correctAnswer": 0,
+    "quizId": "quiz_react_setup"
+  },
+  {
+    "id": 700,
+    "question": "Qu'est-ce qu'un Pod dans Kubernetes ?",
+    "answers": ["La plus petite unité de déploiement", "Un type de base de données", "Un serveur physique", "Un langage de script"],
+    "correctAnswer": 0,
+    "quizId": "quiz_k8s_intro"
+  },
+  {
+    "id": 701,
+    "question": "Quel objet Kubernetes permet d'exposer un ensemble de Pods ?",
+    "answers": ["Service", "Deployment", "Pod", "ConfigMap"],
+    "correctAnswer": 0,
+    "quizId": "quiz_k8s_intro"
+  },
+  {
+    "id": 702,
+    "question": "Que signifie K8s ?",
+    "answers": ["Kubernetes", "K-eight-s", "Kernels", "K8-systems"],
+    "correctAnswer": 0,
+    "quizId": "quiz_k8s_intro"
+  },
+  {
+    "id": 800,
+    "question": "Qu'est-ce que la reconnaissance passive ?",
+    "answers": ["Collecte d'infos sans interaction directe", "Un scan de ports agressif", "Une intrusion forcée", "L'utilisation de proxies"],
+    "correctAnswer": 0,
+    "quizId": "quiz_pentest_recon"
+  },
+  {
+    "id": 801,
+    "question": "Quel outil est couramment utilisé pour le scan de ports ?",
+    "answers": ["Nmap", "Wireshark", "Metasploit", "Burp Suite"],
+    "correctAnswer": 0,
+    "quizId": "quiz_pentest_recon"
+  },
+  {
+    "id": 802,
+    "question": "Quel est le but principal de la phase de reconnaissance ?",
+    "answers": ["Identifier la surface d'attaque", "Voler des mots de passe", "Chiffrer les données", "Corriger les failles"],
+    "correctAnswer": 0,
+    "quizId": "quiz_pentest_recon"
+  },
+  {
+    "id": 900,
+    "question": "Qu'est-ce qui est considéré comme un widget dans Flutter ?",
+    "answers": ["Tout", "Uniquement les boutons", "Les fichiers de configuration", "Le moteur de rendu"],
+    "correctAnswer": 0,
+    "quizId": "quiz_flutter_widgets"
+  },
+  {
+    "id": 901,
+    "question": "Quelle est la différence entre un StatelessWidget et un StatefulWidget ?",
+    "answers": ["StatefulWidget peut changer d'état dynamiquement", "StatelessWidget est plus rapide", "StatelessWidget est obsolète", "StatefulWidget est utilisé uniquement pour les images"],
+    "correctAnswer": 0,
+    "quizId": "quiz_flutter_widgets"
+  },
+  {
+    "id": 902,
+    "question": "Comment construit-on l'interface utilisateur dans Flutter ?",
+    "answers": ["En imbriquant des widgets (composition)", "Par héritage de classes", "Via du XML uniquement", "En utilisant uniquement du HTML/CSS"],
+    "correctAnswer": 0,
+    "quizId": "quiz_flutter_widgets"
   }
 ]
